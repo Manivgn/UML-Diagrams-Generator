@@ -1,23 +1,27 @@
 package org.mql.java.application.models;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.Arrays;
+import java.util.List;
 
 public class ContainerField {
-	private String visibility ;
+	private List <String> visibility ;
 	private String type ;
 	private String name ;
 
 	public ContainerField(Field field) {
+		this.visibility = Arrays.asList(Modifier.toString(field.getModifiers()));
 		this.type = field.getGenericType().getTypeName();
 		this.name = field.getName() ;
 		
 	}
 
-	public String getVisibility() {
+	public List <String> getVisibility() {
 		return visibility;
 	}
 
-	public void setVisibility(String visibility) {
+	public void setVisibility(List <String> visibility) {
 		this.visibility = visibility;
 	}
 

@@ -1,32 +1,33 @@
 package org.mql.java.application.models;
 
 import java.lang.reflect.Method;
-
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.List;
 
 
 public class ContainerMethod {
-	private String visibility ;
-	private String type ;
+	private List<String> visibility ;
 	private String name ;
+	private String returntype ;
 	private List<String> parameterstype ;
 	private List<String> parameters ;
 	
 	
 	public ContainerMethod(Method method) {
-		this.type = method.getGenericReturnType().getTypeName();
+		this.visibility = Arrays.asList(Modifier.toString(method.getModifiers()));
+		this.returntype = method.getGenericReturnType().getTypeName();
 		this.name = method.getName() ;
 		parameterstype = Arrays.asList(method.getGenericParameterTypes().toString());
 		parameters = Arrays.asList(method.getParameters().toString());
 	}
 	
-	public String getVisibility() {
+	public List<String> getVisibility() {
 		return visibility;
 	}
 
 
-	public void setVisibility(String visibility) {
+	public void setVisibility(List<String> visibility) {
 		this.visibility = visibility;
 	}
 
@@ -50,11 +51,11 @@ public class ContainerMethod {
 	}
 
 	public String getType() {
-		return type;
+		return returntype;
 	}
 
 	public void setType(String type) {
-		this.type = type;
+		this.returntype = type;
 	}
 
 	public List<String> getParameterstype() {
