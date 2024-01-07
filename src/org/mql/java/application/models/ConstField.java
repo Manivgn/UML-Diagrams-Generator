@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 public class ConstField {
 		
+	private String visibility = "public" ;
 	private String type ;
 	private String name ;
 	private Object value ;
@@ -12,7 +13,7 @@ public class ConstField {
 		this.type = field.getGenericType().toString();
 		this.name = field.getName().toString();
 		try {
-			field.setAccessible(true);
+			field.setAccessible(true); //pas necessaire interface donc fields obligatoirement public
 			this.value = field.get(obj);
 			field.setAccessible(false);
 		} catch (Exception e) {
@@ -43,6 +44,14 @@ public class ConstField {
 
 	public void setValue(Object value) {
 		this.value = value;
+	}
+
+	public String getVisibility() {
+		return visibility;
+	}
+
+	public void setVisibility(String visibility) {
+		this.visibility = visibility;
 	}
 
 }

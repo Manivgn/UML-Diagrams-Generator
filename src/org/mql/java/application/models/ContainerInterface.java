@@ -11,9 +11,6 @@ public class ContainerInterface {
 	private List<ConstField> constfields ;
 	private List<ContainerMethod> innermethods ;
 	
-	public ContainerInterface() {
-		
-	}
 	
 	public ContainerInterface(Class<?> cl) {
 		if (cl.isInterface()) {
@@ -44,7 +41,7 @@ public class ContainerInterface {
 	}
 
 
-	public List<ContainerMethod> getMethods() {
+	public List<ContainerMethod> getInnerMethods() {
 		return innermethods;
 	}
 

@@ -1,6 +1,7 @@
 package org.mql.java.application.models;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -13,6 +14,7 @@ public class ContainerClass {
 	
 	private List<String> visibility ;
 	private String name ;
+	private List<ContainerMethod> currclassConstructors ;
 	private List<ContainerMethod> currclassmethods; //
 	private List<ContainerField> currclassFields  ; //
 	private List<String> currclassInheritance  ; //
@@ -29,6 +31,12 @@ public class ContainerClass {
 		this.visibility = Arrays.asList(Modifier.toString(cl.getModifiers()));
 		this.name = cl.toString();
 		
+		//constructors
+		Constructor<?>[] constructors = cl.getDeclaredConstructors();
+		currclassConstructors = new Vector<ContainerMethod>();
+		for (Constructor<?> constructor : constructors) {
+			currclassConstructors.add(new ContainerMethod(constructor));
+		}
 		//methods
 		Method [] methods = cl.getDeclaredMethods();
 		currclassmethods = new Vector<ContainerMethod>();
@@ -45,9 +53,10 @@ public class ContainerClass {
 		//Chaine d'héritage
 		Class<?> superCl = cl.getSuperclass();
 		currclassInheritance = new Vector<String>();
-		currclassInheritance.add(superCl.toString());
+		//currclassInheritance.add(superCl.toString());
 				while (superCl != null) {
-					currclassInheritance.add(superCl.toString());
+					String src = System.getProperty("java.class.path");
+					currclassInheritance.add(src.concat(" ").concat(superCl.toString()));
 					superCl = superCl.getSuperclass();
 		}
 		//uses
@@ -170,7 +179,20 @@ public class ContainerClass {
 	public void setUses(List <String> uses) {
 		this.uses = uses;
 	}
+	
+	@Override
+	public String toString() {
+		return (visibility + name + currclassFields + currclassmethods + currclassInheritance
+						   + currclassImplementedInterf + currclassannotations + innerClasses);
+	}
 
+	public List<ContainerMethod> getCurrclassConstructors() {
+		return currclassConstructors;
+	}
+
+	public void setCurrclassConstructors(List<ContainerMethod> currclassConstructors) {
+		this.currclassConstructors = currclassConstructors;
+	}
 
 
 

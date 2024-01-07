@@ -1,27 +1,38 @@
 package org.mql.java.application.models;
 
+
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
+
 
 public class ContainerField {
-	private List <String> visibility ;
+	private String visibility ;
 	private String type ;
 	private String name ;
+	private List<String> fieldannotations ;
 
 	public ContainerField(Field field) {
-		this.visibility = Arrays.asList(Modifier.toString(field.getModifiers()));
+		this.visibility = Modifier.toString(field.getModifiers());
 		this.type = field.getGenericType().getTypeName();
 		this.name = field.getName() ;
+		Annotation[] annots = field.getDeclaredAnnotations();
+		if (annots.length != 0) {
+		this.fieldannotations = new Vector<String>();
+		for (Annotation annot : annots) {
+			fieldannotations.add(annot.toString());
+		}
+		}
 		
 	}
 
-	public List <String> getVisibility() {
+	public String getVisibility() {
 		return visibility;
 	}
 
-	public void setVisibility(List <String> visibility) {
+	public void setVisibility(String visibility) {
 		this.visibility = visibility;
 	}
 
@@ -39,6 +50,14 @@ public class ContainerField {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<String> getAnnotations() { 
+		return fieldannotations;
+	}
+
+	public void setAnnotations(List<String> annotations) {
+		this.fieldannotations = annotations;
 	}
 
 }
