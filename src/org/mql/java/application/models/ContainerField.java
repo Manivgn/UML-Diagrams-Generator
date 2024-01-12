@@ -59,5 +59,12 @@ public class ContainerField {
 	public void setAnnotations(List<String> annotations) {
 		this.fieldannotations = annotations;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return visibility + type + name ;
+	}
+	
 
 }

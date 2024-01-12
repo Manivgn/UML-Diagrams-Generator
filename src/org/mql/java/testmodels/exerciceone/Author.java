@@ -1,13 +1,15 @@
 package org.mql.java.testmodels.exerciceone;
 
 import org.mql.java.testmodels.annotations.*;
-import org.mql.java.models.*;
+
+
 
 /*
  * Pour tester StringMapper et ClassParser
  */
 @Form(title="Gestion des auteurs" , labelSize = 120)
-public final class Author extends Person implements TestforInterface{
+public final class Author extends TestForExtension implements TestforInterface{
+		
 		
 		@Controller
 		@TextField(label="Nom", size=30)
@@ -21,7 +23,6 @@ public final class Author extends Person implements TestforInterface{
 		
 		
 		public Author(int id, String name, String country, Date birthday) {
-			super(id);
 			this.name = name;
 			this.country = country;
 			this.birthday = birthday;

@@ -16,10 +16,10 @@ public class Book extends Document implements PageParser, TestforInterface{
 	private Vector<String> pages ;
 		
 		@ForConstructor(key=18)
-		public Book(int ISBN, int identificateur,Author author) {
+		public Book(int ISBN, int identificateur,Date date) {
 			super(ISBN);
 			this.identificateur = identificateur;
-			this.author = author ;
+			
 		}
 		public int getISBN() {
 			return ISBN;

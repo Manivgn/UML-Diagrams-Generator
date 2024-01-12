@@ -1,20 +1,42 @@
 package org.mql.java.application.models;
 
+
 import java.util.LinkedHashSet;
 
+
+
 public class ContainerProject {
-	private LinkedHashSet<ContainerPackage> packlist ;
- 
+	
+	private LinkedHashSet<String> packagelist ; //un tableau de packages (uniques/Set);
+	
+	/*
+	public ContainerProject(String projectpath, String packagename) {
+		setPackagelist(new LinkedHashSet<ContainerPackage>());
+		classpath = projectpath.concat("\\bin");
+		System.out.println(classpath);
+		scanProject(new File(classpath),classpath, packagename);
+		//System.out.println(ctnpro.getPacklist());
+	}
+	*/
 	public ContainerProject() {
-		packlist = new LinkedHashSet<ContainerPackage>();
+		packagelist = new LinkedHashSet<String>();
+		
 	}
 	
-	public LinkedHashSet<ContainerPackage> getPacklist() {
-		return packlist;
+	public void addPackage(String e) {
+		packagelist.add(e);
 	}
-	
-	public void addtoContainerProject(ContainerPackage pack ) {
-		packlist.add(pack);
+
+
+	public LinkedHashSet<String> getPackagelist() {
+		return packagelist;
 	}
+
+
+	public void setPackagelist(LinkedHashSet<String> packagelist) {
+		this.packagelist = packagelist;
+	}
+		
+
 
 }

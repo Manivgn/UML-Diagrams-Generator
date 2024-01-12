@@ -28,7 +28,7 @@ public class ContainerMethod {
 		if (cls.length != 0) {
 		this.parameterstype = new Vector<String>();
 		for (Type cl : cls) {
-			parameterstype.add(cl.getTypeName().toString());
+			parameterstype.add(cl.getTypeName());
 		}
 		}
 		Annotation[] annots = method.getDeclaredAnnotations();
@@ -112,6 +112,12 @@ public class ContainerMethod {
 
 	public void setAnnotations(List<String> annotations) {
 		this.annotations = annotations;
+	}
+	
+	@Override
+	public String toString() {
+		return getVisibility() + getType() + getName(); 
+		
 	}
 	
 

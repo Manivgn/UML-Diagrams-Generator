@@ -53,5 +53,10 @@ public class ConstField {
 	public void setVisibility(String visibility) {
 		this.visibility = visibility;
 	}
+	
+	@Override
+	public String toString() {
+		return getVisibility() + getType() + getName() + getValue();
+	}
 
 }

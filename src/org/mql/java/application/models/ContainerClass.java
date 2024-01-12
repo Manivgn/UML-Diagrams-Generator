@@ -5,6 +5,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
@@ -27,28 +28,59 @@ public class ContainerClass {
 	
 	
 	public ContainerClass(Class<?> cl) {
-		
+		if (!cl.isAnnotation() && !cl.isEnum() && !cl.isInterface() && !cl.isRecord() ) {
 		this.visibility = Arrays.asList(Modifier.toString(cl.getModifiers()));
 		this.name = cl.toString();
+		uses = new Vector<String>();
+		agregations = new Vector<String>();
+		compositions = new Vector<String>();
 		
 		//constructors
 		Constructor<?>[] constructors = cl.getDeclaredConstructors();
 		currclassConstructors = new Vector<ContainerMethod>();
 		for (Constructor<?> constructor : constructors) {
 			currclassConstructors.add(new ContainerMethod(constructor));
+			Type[] clzs = constructor.getParameterTypes();
+			//Composition est plus complexe a determiner
+			//Se baser uniquement sur les parametres du constructeur ne fournit pas réélement d'informations
+			// sur une éventuelle composition
+			for (Type clz : clzs) {
+				if (isNotsPrimitive(clz) && !clz.getTypeName().equals(cl.getTypeName())) {
+					compositions.add(clz.getTypeName());
+				}
+			}
 		}
+		//System.out.println("Composition");
+		//System.out.println(getCompositions());
+		
 		//methods
 		Method [] methods = cl.getDeclaredMethods();
 		currclassmethods = new Vector<ContainerMethod>();
 		for (Method method : methods) {
 			currclassmethods.add(new ContainerMethod(method));
-		}
+			Type[] clzs = method.getGenericParameterTypes();
+			for (Type clz : clzs) {
+				//System.out.println(clz.getTypeName());
+				if (isNotsPrimitive(clz) && !clz.getTypeName().equals(cl.getTypeName())) {
+					uses.add(clz.getTypeName());
+					}
+				}
+			}
+		//System.out.println("Utilisation");
+		//System.out.println(getUses());
+		
 		//fields
 		Field [] fields = cl.getDeclaredFields();
 		currclassFields = new Vector<ContainerField>();
 		for (Field field : fields) {
 			currclassFields.add(new ContainerField(field));
+			Type clz = field.getGenericType();
+				if (isNotsPrimitive(clz) && !clz.getTypeName().equals(cl.getTypeName())) {
+					agregations.add(clz.getTypeName());
+			}
 		}
+		//System.out.println("Agrégation");
+		//System.out.println(getAgregations());
 		
 		//Chaine d'héritage
 		Class<?> superCl = cl.getSuperclass();
@@ -59,12 +91,8 @@ public class ContainerClass {
 					currclassInheritance.add(src.concat(" ").concat(superCl.toString()));
 					superCl = superCl.getSuperclass();
 		}
-		//uses
 				
-		//agregation
 				
-		//composition
-		
 		//implemented interfaces
 		currclassImplementedInterf = new Vector<String>();
 		Class<?> []ans = cl.getInterfaces();
@@ -85,11 +113,10 @@ public class ContainerClass {
 		for (Class<?> class1 : innercl) {
 			innerClasses.add(new ContainerClass(class1));
 		}
+				
+		}
 		
-		
-		
-		
-	}
+}
 	
 	public List<ContainerField> getCurrclassFields() {
 		return currclassFields;
@@ -193,7 +220,32 @@ public class ContainerClass {
 	public void setCurrclassConstructors(List<ContainerMethod> currclassConstructors) {
 		this.currclassConstructors = currclassConstructors;
 	}
-
+	
+	public boolean isNotsPrimitive(Type tpz) {
+		
+		if (!tpz.getTypeName().equals(boolean.class.getTypeName())
+			 && !tpz.getTypeName().equals(String.class.getTypeName())
+			 && !tpz.getTypeName().equals(byte.class.getTypeName())
+			 && !tpz.getTypeName().equals(short.class.getTypeName())
+			 && !tpz.getTypeName().equals(int.class.getTypeName())
+			 && !tpz.getTypeName().equals(long.class.getTypeName())
+			 && !tpz.getTypeName().equals(float.class.getTypeName())
+			 && !tpz.getTypeName().equals(double.class.getTypeName())
+			 && !tpz.getTypeName().equals(Boolean.class.getTypeName())
+			 && !tpz.getTypeName().equals(Byte.class.getTypeName())
+			 && !tpz.getTypeName().equals(Short.class.getTypeName())
+			 && !tpz.getTypeName().equals(Integer.class.getTypeName())
+			 && !tpz.getTypeName().equals(Long.class.getTypeName())
+			 && !tpz.getTypeName().equals(Float.class.getTypeName())
+			 && !tpz.getTypeName().equals(Double.class.getTypeName())
+			 && !tpz.getTypeName().equals(Character.class.getTypeName())	 
+			)
+			{
+			return true ;
+			}
+		return false;
+		
+	}
 
 
 

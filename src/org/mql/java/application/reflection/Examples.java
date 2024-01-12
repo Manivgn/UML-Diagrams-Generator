@@ -6,6 +6,7 @@ import org.mql.java.application.models.ContainerClass;
 import org.mql.java.application.models.ContainerField;
 import org.mql.java.application.models.ContainerInterface;
 import org.mql.java.application.models.ContainerMethod;
+import org.mql.java.application.models.ContainerPackage;
 import org.mql.java.testmodels.annotations.Action;
 import org.mql.java.testmodels.exerciceone.Author;
 import org.mql.java.testmodels.exerciceone.Book;
@@ -14,7 +15,8 @@ import org.mql.java.testmodels.exerciceone.TestforInterface;
 public class Examples {
 
 	public Examples() {
-		exp03();
+		exp11();
+		
 	}
 	
 	public void exp01() {
@@ -26,7 +28,6 @@ public class Examples {
 			System.out.println(el.getType());
 			System.out.println(el.getName());
 			System.out.println(el.getParameterstype());
-			System.out.println(el.getParameters());
 			System.out.println(el.getAnnotations());
 			
 		}
@@ -104,6 +105,37 @@ public class Examples {
 			System.out.println(el.getName());
 			System.out.println(el.getParameterstype());
 			System.out.println(el.getAnnotations());
+			
+		}
+	}
+	
+	
+	void exp11() {
+		ProjectExplorer p = new ProjectExplorer("C:\\Users\\hp\\eclipse-workspace\\VALGUENA-MANI-CARMEL-Generics");
+		//System.out.println(p.getCtnpro());
+		for(String s : p.getCtnpro()) {
+			PackageExplorer pexp = new PackageExplorer(p.getClasspath(), s);
+			ContainerPackage ctnpck = pexp.getCtnpck();
+			
+			
+			  System.out.println("Conteneur package");
+			  System.out.println("Nom du package");
+			 System.out.println(ctnpck.getPackageName());
+			 /*
+			 * System.out.println("Conteneur de Class");
+			 * System.out.println(ctnpck.getClasslist());
+			 * 
+			 */ 
+			 System.out.println("Conteneur d'Interface");
+			 System.out.println(ctnpck.getInterfacelist());
+			 /*
+			 * System.out.println("Conteneur d'Annotation");
+			 * System.out.println(ctnpck.getAnnotationlist());
+			 * System.out.println("Conteneur d'Enumeration");
+			 * System.out.println(ctnpck.getEnumlist());
+			 */
+			 
+			
 			
 		}
 	}
