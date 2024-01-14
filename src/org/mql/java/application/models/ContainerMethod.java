@@ -5,21 +5,26 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
+import org.mql.java.application.mapping.XMLMapping;
 
-public class ContainerMethod {
+
+public class ContainerMethod implements XMLMapping{
 	private String visibility ="";
 	private String returntype ;
 	private String name ;
 	private List<String> parameterstype ;
 	private List<String> parameters ;
 	private List<String> annotations ;
+	public boolean isConstructor = false ;
 	
 	
 	public ContainerMethod(Method method) { 
+		this.isConstructor = false ;
 		this.visibility = Modifier.toString(method.getModifiers());
 		this.returntype = method.getReturnType().getSimpleName();
 		this.name = method.getName().toString() ;
@@ -42,6 +47,7 @@ public class ContainerMethod {
 		
 	}
 	public ContainerMethod(Constructor<?> construct) { 
+		this.isConstructor = true ;
 		this.visibility = Modifier.toString(construct.getModifiers());
 		this.name = construct.getName();
 		Type[] cls = construct.getGenericParameterTypes();
@@ -116,12 +122,55 @@ public class ContainerMethod {
 	
 	@Override
 	public String toString() {
-		return getVisibility() + getType() + getName(); 
+		return visibility +" "+ returntype +" "+ name + "( " 
+					 +" )" +"\n";
 		
 	}
 	
-
-
-
+	@Override
+	public StringBuffer toXML() {
+		StringBuffer r = new StringBuffer();
+		
+		if (isConstructor == false) {
+		r.append("<method ");
+				r.append("visibility =\"").append(getVisibility()).append("\"");
+				r.append(" return-type =\"").append(getType().replace("<", "[").replace(">", "]")).append("\"");
+				r.append(" name =\"").append(getName()).append("\"");
+		r.append(" >").append("\n");
+		if(getParameterstype() != null && !getParameterstype().isEmpty()) {
+		r.append("<parameters>").append("\n");
+				for (String param : getParameterstype()) {
+					r.append("<parameter ");
+					r.append("type =\"").append(param.replace("<", "[").replace(">", "]")).append("\"");
+					r.append(" />").append("\n");
+				}
+		r.append("</parameters>").append("\n");
+		}
+		
+		r.append("</method>").append("\n");	
+		
+	   }
+		else {
+			
+			r.append("<constructor ").append("\n");
+					r.append(" name =\"").append(getName()).append("\"");
+					r.append(" visibility =\"").append(getVisibility()).append("\"");
+			r.append(" >").append("\n");
+			if(getParameterstype() != null && !getParameterstype().isEmpty()) {
+			r.append("<parameters>").append("\n");
+					for (String param : getParameterstype()) {
+						r.append("<parameter ");
+						r.append("type =\"").append(param).append("\"");
+						r.append(" />").append("\n");
+					}
+			r.append("</parameters>").append("\n");
+			}
+			
+			r.append("</constructor>").append("\n");	
+	
+		}
+		return r;
+	
+	}
 
 }

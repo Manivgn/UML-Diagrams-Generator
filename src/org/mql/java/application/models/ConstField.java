@@ -1,15 +1,19 @@
 package org.mql.java.application.models;
-
 import java.lang.reflect.Field;
 
-public class ConstField {
+import org.mql.java.application.mapping.XMLMapping;
+
+public class ConstField implements XMLMapping{
 		
-	private String visibility = "public" ;
+	private String visibility ;
 	private String type ;
 	private String name ;
 	private Object value ;
 	
+	
+	
 	public ConstField(Object obj,Field field) {
+		this.visibility = java.lang.reflect.Modifier.toString(field.getModifiers());
 		this.type = field.getGenericType().toString();
 		this.name = field.getName().toString();
 		try {
@@ -53,10 +57,20 @@ public class ConstField {
 	public void setVisibility(String visibility) {
 		this.visibility = visibility;
 	}
-	
 	@Override
 	public String toString() {
-		return getVisibility() + getType() + getName() + getValue();
+		return getVisibility() + getType() + getName() +" = "+ getValue()+"\n";
+	}
+	@Override
+	public StringBuffer toXML() {
+		StringBuffer r = new StringBuffer();
+		r.append("<const-field ");
+								r.append(" name =\"").append(getName()).append("\"");
+								r.append(" type =\"").append(getType()).append("\"");
+								r.append(" value =\"").append(getValue()).append("\"");
+								r.append(" visibility =\"").append(getVisibility()).append("\"");
+		r.append(" />");
+		return r ;
 	}
 
 }

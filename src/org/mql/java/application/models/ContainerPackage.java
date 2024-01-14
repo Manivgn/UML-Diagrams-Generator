@@ -5,14 +5,18 @@ import java.io.File;
 import java.util.List;
 import java.util.Vector;
 
+import org.mql.java.application.loggers.Logger;
+import org.mql.java.application.mapping.XMLMapping;
 import org.mql.java.application.reflection.MaClassLoader;
 
-public class ContainerPackage {
+public class ContainerPackage implements XMLMapping{
+	private Logger logger = null;
 	private String packageName ;
 	private List<ContainerClass> classlist ;
 	private List<ContainerAnnotation> annotationlist ;
 	private List<ContainerEnum> enumlist ;
 	private List<ContainerInterface> interfacelist ;
+	
 	
 	
 	public ContainerPackage(String classpath, String packagename, File[] files)  {
@@ -102,10 +106,76 @@ public class ContainerPackage {
 	public void setPackageName(String packageName) {
 		this.packageName = packageName;
 	}
-	
+	public void display() {
+		log(this.toString());
+	}
 	@Override
 	public String toString() {
-		return getPackageName() + getInterfacelist()  ;
+		return getPackageName() +"\n"+
+				"Interface Section \n" +
+				getInterfacelist() + "\n"+
+				"Class Section \n" +
+				getClasslist() +"\n"+
+				"Annotation Section \n" +
+				getAnnotationlist() +"\n"+
+				"Enum Section \n" +
+				getEnumlist() +"\n" +"\n" + "\n" + "\n" ;
+				
+	}
+
+	public void setLogger(Logger logger) {
+		this.logger = logger;
+	}
+	public void log(String message) {
+		if (logger != null) {
+			logger.log(message);
+		}
+	}
+
+	@Override
+	public StringBuffer toXML() {
+		StringBuffer r = new StringBuffer();
+		r.append("<package ");
+				r.append(" name =\"").append(getPackageName()).append("\"");
+		r.append(" >");
+		
+		if (getClasslist() != null && !getClasslist().isEmpty()) {
+			r.append("<classes>").append("\n");
+				for (ContainerClass ctnclz : getClasslist()) {
+					r.append(ctnclz.toXML()).append("\n");
+				}
+			r.append("</classes>").append("\n");
+		}
+		
+		if (getInterfacelist() != null && !getInterfacelist().isEmpty()) {
+			r.append("<interfaces>").append("\n");
+				for (ContainerInterface ctninterf : getInterfacelist()) {
+					r.append(ctninterf.toXML()).append("\n");
+				}
+			r.append("</interfaces>").append("\n");
+			
+		}
+		
+		if (getAnnotationlist() != null && !getEnumlist().isEmpty()) {
+			r.append("<annotations>").append("\n");
+				for (ContainerAnnotation ctnann : getAnnotationlist()) {
+					r.append(ctnann.toXML()).append("\n");
+				}
+			r.append("</annotations>").append("\n");
+	
+		}
+		
+		if (getEnumlist() != null && !getEnumlist().isEmpty()) {
+			r.append("<enumerations>").append("\n");
+				for (ContainerEnum ctnenum : getEnumlist()) {
+					r.append(ctnenum.toXML()).append("\n");
+				}
+			r.append("</enumerations>").append("\n");
+	
+		}
+		r.append("</package>").append("\n");
+				
+		return r ;
 	}
 	
 

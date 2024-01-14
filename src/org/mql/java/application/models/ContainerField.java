@@ -7,16 +7,22 @@ import java.lang.reflect.Modifier;
 import java.util.List;
 import java.util.Vector;
 
+import org.mql.java.application.mapping.XMLMapping;
 
-public class ContainerField {
+import java.lang.StringBuffer;
+
+
+
+public class ContainerField implements XMLMapping{
 	private String visibility ;
 	private String type ;
 	private String name ;
 	private List<String> fieldannotations ;
+	
 
 	public ContainerField(Field field) {
 		this.visibility = Modifier.toString(field.getModifiers());
-		this.type = field.getGenericType().getTypeName();
+		this.type = field.getGenericType().getTypeName().replace("<", "[").replace(">", "]");
 		this.name = field.getName() ;
 		Annotation[] annots = field.getDeclaredAnnotations();
 		if (annots.length != 0) {
@@ -60,11 +66,24 @@ public class ContainerField {
 		this.fieldannotations = annotations;
 	}
 	
-	
 	@Override
 	public String toString() {
-		return visibility + type + name ;
+		return visibility + type + name +"\n";
 	}
+	
+	@Override
+	public StringBuffer toXML() {
+		StringBuffer r = new StringBuffer();
+		r.append("<field ");
+				r.append(" name =\"").append(getName()).append("\"");
+				r.append(" type =\"").append(getType()).append("\"");
+				r.append(" visibility =\"").append(getVisibility()).append("\"");
+		r.append(" />").append("\n");
+			
+		
+		return r;
+	}
+	
 	
 
 }

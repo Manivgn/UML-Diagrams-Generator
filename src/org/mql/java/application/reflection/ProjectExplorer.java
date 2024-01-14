@@ -1,14 +1,12 @@
 package org.mql.java.application.reflection;
 
 import java.io.File;
-import java.util.LinkedHashSet;
-
 import org.mql.java.application.models.ContainerProject;
 
 
 
 public class ProjectExplorer {
-	private static ContainerProject ctnpro ;
+	private ContainerProject ctnpro ;
 	public String classpath ="" ;
 	
 	
@@ -31,15 +29,14 @@ public class ProjectExplorer {
 	
 	//Boolean isProjectAvailable = false;
 	// Cas ou le nom du projet est fourni incluant le path vers le projet
-	//Sinon on peut récuperer le user dir lui soustraire le workspace et y concatener le nom du projet + bin
 	public ProjectExplorer(String projectpath) {
-		ctnpro = new ContainerProject();
+		ctnpro = new ContainerProject(toProjectName(projectpath));
 		classpath = projectpath.concat("\\bin");
 		System.out.println("Classpath : " + classpath);
 		scanProject(new File(classpath), "");
 	}
 	
-	public static void scanProject(File dir , String packagename) {
+	public void scanProject(File dir , String packagename) {
 		
 		File files[] = dir.listFiles();
 		for (File file : files) {
@@ -69,8 +66,14 @@ public class ProjectExplorer {
 		}
 	}
 	
-	public  LinkedHashSet<String> getCtnpro() {
-		return ctnpro.getPackagelist();
+	public String toProjectName(String projectpath) {
+		int lasti = projectpath.lastIndexOf("\\");
+		return projectpath.substring(lasti+1);
+		
+	}
+	
+	public  ContainerProject getCtnpro() {
+		return ctnpro;
 	}
 	
 	public String getClasspath() {

@@ -1,31 +1,27 @@
 package org.mql.java.application.models;
 
 
-import java.util.List;
-import java.util.Vector;
+import java.util.Arrays;
 
-public class ContainerEnum {
+
+import org.mql.java.application.mapping.XMLMapping;
+
+public class ContainerEnum implements XMLMapping {
 	private String name ;
-	private List<Object> enumconst ;
+	private Object []enumconst ;
+	
+	
 	
 	public ContainerEnum(Class<?> enums) {
 		if (enums.isEnum()) {
 			this.name = enums.toString();
-			Object [] cls = enums.getEnumConstants();
-			this.enumconst = new Vector<Object>();
-			for (Object cl : cls) {
-				enumconst.add(cl);
-			}
+			enumconst = enums.getEnumConstants();
 		}
 		
 	}
-
-	public List<Object> getEnumconst() {
+	
+	public Object[] getEnumconst() {
 		return enumconst;
-	}
-
-	public void setEnumconst(List<Object> enumconst) {
-		this.enumconst = enumconst;
 	}
 
 	public String getName() {
@@ -35,10 +31,24 @@ public class ContainerEnum {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	@Override
 	public String toString() {
-		return name + enumconst ;
+		return getName() +"\n { "+
+				Arrays.toString(getEnumconst())+" } \n";
 	}
+
+	@Override
+	public StringBuffer toXML() {
+		StringBuffer r = new StringBuffer() ;
+		r.append("<enumeration ").append("name =\"").append(getName()).append("\"").append(" />");
+				for (int i = 0 ; i < getEnumconst().length ; i++) {
+					r.append("<state ");
+							r.append("value =\"").append(getEnumconst()[i]).append("\"");
+					r.append(" />");
+				}
+		r.append("</enumeration>");
+		return r ;
+	}
+	
 
 }

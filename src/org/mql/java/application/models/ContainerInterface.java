@@ -2,10 +2,13 @@ package org.mql.java.application.models;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
-public class ContainerInterface {
+import org.mql.java.application.mapping.XMLMapping;
+
+public class ContainerInterface implements XMLMapping{
 	
 	private String name ;
 	private List<ConstField> constfields ;
@@ -57,11 +60,37 @@ public class ContainerInterface {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	@Override
 	public String toString() {
-		return getName() + getConstfields() + getInnerMethods();
+		return getName() +"\n { "+
+				Arrays.toString(getConstfields().toArray()) +"\n"+
+				Arrays.toString(getInnerMethods().toArray())+" } \n";
 	}
+	
+	@Override
+	public StringBuffer toXML() {
+		StringBuffer r = new StringBuffer();
+		r.append("<interface ").append("\n");
+							r.append(" name =\"").append(getName()).append("\"");
+							r.append(">");
+						if(getConstfields() != null && !getConstfields().isEmpty()) {
+						r.append("<fields>").append("\n");
+						for (ConstField cf : getConstfields()) {
+							r.append(cf.toXML()).append("\n");
+						}
+						r.append("</fields>").append("\n");
+						}
+						if (getInnerMethods() != null && !getInnerMethods().isEmpty()) {
+						r.append("<methods>").append("\n");
+						for (ContainerMethod im : getInnerMethods()) {
+							r.append(im.toXML()).append("\n");
+						}
+						r.append("</methods>").append("\n");
+						}
+		r.append("</interface>").append("\n");
+		return r ;
+	}
+	
 
 
 	

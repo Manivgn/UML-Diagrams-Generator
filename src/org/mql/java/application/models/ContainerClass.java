@@ -10,8 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
+import org.mql.java.application.mapping.XMLMapping;
 
-public class ContainerClass {
+
+public class ContainerClass implements XMLMapping{
 	
 	private List<String> visibility ;
 	private String name ;
@@ -61,7 +63,9 @@ public class ContainerClass {
 			Type[] clzs = method.getGenericParameterTypes();
 			for (Type clz : clzs) {
 				//System.out.println(clz.getTypeName());
-				if (isNotsPrimitive(clz) && !clz.getTypeName().equals(cl.getTypeName())) {
+				if (isNotsPrimitive(clz) && !clz.getTypeName().equals(cl.getTypeName())
+						&& !clz.getTypeName().contains("java.lang.String")
+						) {
 					uses.add(clz.getTypeName());
 					}
 				}
@@ -75,7 +79,9 @@ public class ContainerClass {
 		for (Field field : fields) {
 			currclassFields.add(new ContainerField(field));
 			Type clz = field.getGenericType();
-				if (isNotsPrimitive(clz) && !clz.getTypeName().equals(cl.getTypeName())) {
+				if (isNotsPrimitive(clz) && !clz.getTypeName().equals(cl.getTypeName())
+						&& !clz.getTypeName().contains("java.lang.String")
+						) {
 					agregations.add(clz.getTypeName());
 			}
 		}
@@ -207,11 +213,7 @@ public class ContainerClass {
 		this.uses = uses;
 	}
 	
-	@Override
-	public String toString() {
-		return (visibility + name + currclassFields + currclassmethods + currclassInheritance
-						   + currclassImplementedInterf + currclassannotations + innerClasses);
-	}
+	
 
 	public List<ContainerMethod> getCurrclassConstructors() {
 		return currclassConstructors;
@@ -245,6 +247,101 @@ public class ContainerClass {
 			}
 		return false;
 		
+	}
+
+	@Override
+	public String toString() {
+		return Arrays.toString(getVisibility().toArray()) + getName() +" { \n" +
+				getCurrclassFields() +"\n"+
+				getCurrclassConstructors() +"\n"+
+				getCurrclassmethods() +" } \n" ;		
+				
+	}
+	@Override
+	public StringBuffer toXML() {
+		StringBuffer r = new StringBuffer();
+		r.append("<class ");
+			r.append(" name =\"").append(getName()).append("\"");
+			r.append(" visibility =\"").append(getVisibility()).append("\"");
+			r.append(" annotation =\"");
+				for (String an : getCurrclassannotations()) {
+					r.append(an.replace("\"", "'")).append(", ");
+				}
+				
+				//int lasti = r.lastIndexOf(",");
+				//r.setCharAt(lasti-1, ' ');
+			r.append("\"");
+		r.append(">").append("\n");
+			
+		/*
+		 * if (getCurrclassannotations() != null &&
+		 * !getCurrclassannotations().isEmpty()) { r.append("<annotationsOnThisClass>");
+		 * for (String cf: getCurrclassannotations()) { r.append(cf.toXML()); }
+		 * r.append("</annotationsOnThisClass>"); }
+		 */
+			
+			if (getCurrclassFields() != null && !getCurrclassFields().isEmpty()) {
+				r.append("<fields>").append("\n");
+				for (ContainerField  cf: getCurrclassFields()) {
+					r.append(cf.toXML()).append("\n");
+				}
+				r.append("</fields>").append("\n");
+			}
+			if(getCurrclassConstructors() != null && !getCurrclassConstructors().isEmpty()) {
+				r.append("<constructors>").append("\n");
+				for (ContainerMethod  constr: getCurrclassConstructors()) {
+					r.append(constr.toXML()).append("\n");
+				}
+				r.append("</constructors>").append("\n");
+			}
+			if (getCurrclassmethods() != null && !getCurrclassmethods().isEmpty()) {
+				r.append("<methods>").append("\n");
+				for (ContainerMethod  cm: getCurrclassmethods()) {
+					r.append(cm.toXML()).append("\n");
+				}
+				r.append("</methods>").append("\n");
+			}
+			if (getInnerClasses() != null && !getInnerClasses().isEmpty()) {
+				r.append("<innerClasses>").append("\n");
+				for (ContainerClass clz : getInnerClasses()) {
+					r.append(clz.toXML()).append("\n");
+				}
+				r.append("</innerClasses>").append("\n");
+			}
+			
+			if(		(getCurrclassInheritance() != null && !getCurrclassInheritance().isEmpty()) ||
+					(getUses() != null && !getCurrclassInheritance().isEmpty()) ||
+					(getAgregations() != null && !getCurrclassInheritance().isEmpty()) ||
+					(getCurrclassImplementedInterf() != null && !getCurrclassInheritance().isEmpty()) 
+					) {
+				r.append("<relations>").append("\n");
+					for(String i : getCurrclassInheritance()) {
+						r.append("<relation ");
+						r.append("type =\"inheritance\"").append(" superClass =\"").append(i).append("\"");
+						r.append(" />").append("\n");
+					}
+					for(String i : getUses()) {
+						r.append("<relation ");
+						r.append("type =\"use\"").append(" classname =\"").append(i).append("\"");
+						r.append(" />").append("\n");
+					}
+					for(String i : getAgregations()) {
+						r.append("<relation ");
+						r.append("type =\"agregation\"").append(" aggregated =\"").append(i).append("\"");
+						r.append(" />").append("\n");
+					}
+					for(String i : getCurrclassImplementedInterf()) {
+						r.append("<relation ");
+						r.append("type =\"implementation\"").append(" implemented-interface =\"").append(i).append("\"");
+						r.append(" />").append("\n");
+					}
+				r.append("</relations>").append("\n");
+				
+			}
+		
+		r.append("</class>").append("\n");
+			
+		return r ;
 	}
 
 

@@ -1,24 +1,22 @@
 package org.mql.java.application.reflection;
 
-import org.mql.java.application.models.ConstField;
-import org.mql.java.application.models.ContainerAnnotation;
-import org.mql.java.application.models.ContainerClass;
-import org.mql.java.application.models.ContainerField;
-import org.mql.java.application.models.ContainerInterface;
-import org.mql.java.application.models.ContainerMethod;
-import org.mql.java.application.models.ContainerPackage;
-import org.mql.java.testmodels.annotations.Action;
-import org.mql.java.testmodels.exerciceone.Author;
-import org.mql.java.testmodels.exerciceone.Book;
-import org.mql.java.testmodels.exerciceone.TestforInterface;
+
+import org.mql.java.application.mapping.SerializeToXML;
+import org.mql.java.application.models.ContainerProject;
+
 
 public class Examples {
 
 	public Examples() {
 		exp11();
-		
+	}
+	void ex() {
+		StringBuffer b = new StringBuffer();
+		b.append("eabcde");
+		System.out.println(b.lastIndexOf("e"));
 	}
 	
+	/*
 	public void exp01() {
 		ContainerClass example = new ContainerClass(Author.class);
 		System.out.println("1 " + example.getVisibility());
@@ -108,26 +106,30 @@ public class Examples {
 			
 		}
 	}
-	
+	*/
 	
 	void exp11() {
-		ProjectExplorer p = new ProjectExplorer("C:\\Users\\hp\\eclipse-workspace\\VALGUENA-MANI-CARMEL-Generics");
-		//System.out.println(p.getCtnpro());
-		for(String s : p.getCtnpro()) {
-			PackageExplorer pexp = new PackageExplorer(p.getClasspath(), s);
-			ContainerPackage ctnpck = pexp.getCtnpck();
+		ProjectExplorer p = new ProjectExplorer("C:\\Users\\hp\\eclipse-workspace\\ProjectForTesting UML Diagrams Generator");
+		ContainerProject cp = p.getCtnpro();
+		cp.generateContainerPackage(p.getClasspath());
+		String source = "resources/XML/" + cp.getProjectName() +".xml" ;
+		SerializeToXML.PersistToXML(source, cp.toXML());
+			//PackageExplorer pexp = new PackageExplorer(p.getClasspath(), s);
+			
+			//ctnpck.setLogger(new ConsoleLogger());
+			//ctnpck.display();
 			
 			
-			  System.out.println("Conteneur package");
-			  System.out.println("Nom du package");
-			 System.out.println(ctnpck.getPackageName());
+			 // System.out.println("Conteneur package");
+			 // System.out.println("Nom du package");
+			 //System.out.println(ctnpck.getPackageName());
 			 /*
 			 * System.out.println("Conteneur de Class");
 			 * System.out.println(ctnpck.getClasslist());
 			 * 
 			 */ 
-			 System.out.println("Conteneur d'Interface");
-			 System.out.println(ctnpck.getInterfacelist());
+			 //System.out.println("Conteneur d'Interface");
+			 //System.out.println(ctnpck.getInterfacelist());
 			 /*
 			 * System.out.println("Conteneur d'Annotation");
 			 * System.out.println(ctnpck.getAnnotationlist());
@@ -137,7 +139,7 @@ public class Examples {
 			 
 			
 			
-		}
+		
 	}
 
 	public static void main(String[] args) {
