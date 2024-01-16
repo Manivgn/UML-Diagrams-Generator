@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
-import org.mql.java.application.mapping.XMLMapping;
+import org.mql.java.application.persistancexml.XMLMapping;
 
 
 public class ContainerClass implements XMLMapping{

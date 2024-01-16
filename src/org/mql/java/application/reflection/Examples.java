@@ -1,19 +1,16 @@
 package org.mql.java.application.reflection;
 
 
-import org.mql.java.application.mapping.SerializeToXML;
+import org.mql.java.application.loggers.ConsoleLogger;
+import org.mql.java.application.models.ContainerPackage;
 import org.mql.java.application.models.ContainerProject;
+import org.mql.java.application.persistancexml.SerializeToXML;
 
 
 public class Examples {
 
 	public Examples() {
-		exp11();
-	}
-	void ex() {
-		StringBuffer b = new StringBuffer();
-		b.append("eabcde");
-		System.out.println(b.lastIndexOf("e"));
+		exp10();
 	}
 	
 	/*
@@ -107,17 +104,26 @@ public class Examples {
 		}
 	}
 	*/
+	void exp10() {
+		ProjectExplorer p = new ProjectExplorer("C:\\Users\\hp\\eclipse-workspace\\p05-MultiThreading");
+		ContainerProject cp = p.getCtnpro();
+		cp.generateContainerPackage(p.getClasspath());
+		for(ContainerPackage ctnpck: ContainerProject.getCtnpcklist()) {
+			ctnpck.setLogger(new ConsoleLogger());
+			ctnpck.display();
+		}
+		
+	}
 	
 	void exp11() {
-		ProjectExplorer p = new ProjectExplorer("C:\\Users\\hp\\eclipse-workspace\\ProjectForTesting UML Diagrams Generator");
+		ProjectExplorer p = new ProjectExplorer("C:\\Users\\hp\\eclipse-workspace\\p05-MultiThreading");
 		ContainerProject cp = p.getCtnpro();
 		cp.generateContainerPackage(p.getClasspath());
 		String source = "resources/XML/" + cp.getProjectName() +".xml" ;
 		SerializeToXML.PersistToXML(source, cp.toXML());
-			//PackageExplorer pexp = new PackageExplorer(p.getClasspath(), s);
 			
-			//ctnpck.setLogger(new ConsoleLogger());
-			//ctnpck.display();
+			
+		
 			
 			
 			 // System.out.println("Conteneur package");

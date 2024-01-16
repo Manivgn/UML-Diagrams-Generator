@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+ name ="p05-MultiThreading" ><package  name ="org.mql.java.animation" ><classes>
+<class  name ="class org.mql.java.animation.Examples$ScreenListener" visibility ="[]" annotation ="">
+<fields>
+<field  name ="counter" type ="int" visibility ="private" />
+
+<field  name ="this$0" type ="org.mql.java.animation.Examples" visibility ="final" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.animation.Examples$ScreenListener" visibility ="" >
+<parameters>
+<parameter type ="org.mql.java.animation.Examples" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="mouseClicked" >
+<parameters>
+<parameter type ="java.awt.event.MouseEvent" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="void" name ="mouseExited" >
+<parameters>
+<parameter type ="java.awt.event.MouseEvent" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="void" name ="mousePressed" >
+<parameters>
+<parameter type ="java.awt.event.MouseEvent" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="void" name ="mouseEntered" >
+<parameters>
+<parameter type ="java.awt.event.MouseEvent" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="void" name ="mouseReleased" >
+<parameters>
+<parameter type ="java.awt.event.MouseEvent" />
+</parameters>
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="use" classname ="java.awt.event.MouseEvent" />
+<relation type ="use" classname ="java.awt.event.MouseEvent" />
+<relation type ="use" classname ="java.awt.event.MouseEvent" />
+<relation type ="use" classname ="java.awt.event.MouseEvent" />
+<relation type ="use" classname ="java.awt.event.MouseEvent" />
+<relation type ="agregation" aggregated ="org.mql.java.animation.Examples" />
+<relation type ="implementation" implemented-interface ="interface java.awt.event.MouseListener" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.animation.Examples" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="serialVersionUID" type ="long" visibility ="private static final" />
+
+<field  name ="screen" type ="javax.swing.JPanel" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.animation.Examples" visibility ="public" >
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public static" return-type ="void" name ="main" >
+<parameters>
+<parameter type ="java.lang.String[]" />
+</parameters>
+</method>
+
+<method visibility ="private" return-type ="void" name ="userInterface" >
+</method>
+
+<method visibility ="" return-type ="void" name ="exp01" >
+</method>
+
+</methods>
+<innerClasses>
+<class  name ="class org.mql.java.animation.Examples$ScreenListener" visibility ="[]" annotation ="">
+<fields>
+<field  name ="counter" type ="int" visibility ="private" />
+
+<field  name ="this$0" type ="org.mql.java.animation.Examples" visibility ="final" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.animation.Examples$ScreenListener" visibility ="" >
+<parameters>
+<parameter type ="org.mql.java.animation.Examples" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="mouseClicked" >
+<parameters>
+<parameter type ="java.awt.event.MouseEvent" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="void" name ="mouseExited" >
+<parameters>
+<parameter type ="java.awt.event.MouseEvent" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="void" name ="mousePressed" >
+<parameters>
+<parameter type ="java.awt.event.MouseEvent" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="void" name ="mouseEntered" >
+<parameters>
+<parameter type ="java.awt.event.MouseEvent" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="void" name ="mouseReleased" >
+<parameters>
+<parameter type ="java.awt.event.MouseEvent" />
+</parameters>
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="use" classname ="java.awt.event.MouseEvent" />
+<relation type ="use" classname ="java.awt.event.MouseEvent" />
+<relation type ="use" classname ="java.awt.event.MouseEvent" />
+<relation type ="use" classname ="java.awt.event.MouseEvent" />
+<relation type ="use" classname ="java.awt.event.MouseEvent" />
+<relation type ="agregation" aggregated ="org.mql.java.animation.Examples" />
+<relation type ="implementation" implemented-interface ="interface java.awt.event.MouseListener" />
+</relations>
+</class>
+
+</innerClasses>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JFrame" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Frame" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Window" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Container" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Component" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="agregation" aggregated ="javax.swing.JPanel" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.animation.Pingouin" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="serialVersionUID" type ="long" visibility ="private static final" />
+
+<field  name ="runner" type ="java.lang.Thread" visibility ="private" />
+
+<field  name ="x" type ="int" visibility ="private" />
+
+<field  name ="y" type ="int" visibility ="private" />
+
+<field  name ="width" type ="int" visibility ="private" />
+
+<field  name ="height" type ="int" visibility ="private" />
+
+<field  name ="src" type ="java.lang.String[]" visibility ="private" />
+
+<field  name ="path" type ="java.lang.String" visibility ="private" />
+
+<field  name ="type" type ="java.lang.String" visibility ="private" />
+
+<field  name ="images" type ="java.awt.Image[]" visibility ="private" />
+
+<field  name ="current" type ="int" visibility ="private" />
+
+<field  name ="step" type ="int" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.animation.Pingouin" visibility ="public" >
+<parameters>
+<parameter type ="java.lang.String" />
+<parameter type ="int" />
+<parameter type ="int" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="run" >
+</method>
+
+<method visibility ="public" return-type ="void" name ="start" >
+</method>
+
+<method visibility ="private" return-type ="void" name ="stop" >
+</method>
+
+<method visibility ="protected" return-type ="void" name ="paintComponent" >
+<parameters>
+<parameter type ="java.awt.Graphics" />
+</parameters>
+</method>
+
+<method visibility ="private" return-type ="void" name ="loadImages" >
+</method>
+
+<method visibility ="private" return-type ="void" name ="goRight" >
+<parameters>
+<parameter type ="int" />
+</parameters>
+</method>
+
+<method visibility ="public static" return-type ="void" name ="pause" >
+<parameters>
+<parameter type ="int" />
+</parameters>
+</method>
+
+<method visibility ="private" return-type ="void" name ="goLeft" >
+<parameters>
+<parameter type ="int" />
+</parameters>
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JPanel" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JComponent" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Container" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Component" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="use" classname ="java.awt.Graphics" />
+<relation type ="agregation" aggregated ="java.lang.Thread" />
+<relation type ="agregation" aggregated ="java.awt.Image[]" />
+<relation type ="implementation" implemented-interface ="interface java.lang.Runnable" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.animation.Task" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="runner" type ="java.lang.Thread" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.animation.Task" visibility ="public" >
+<parameters>
+<parameter type ="java.lang.String" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="run" >
+</method>
+
+<method visibility ="public" return-type ="void" name ="start" >
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="agregation" aggregated ="java.lang.Thread" />
+<relation type ="implementation" implemented-interface ="interface java.lang.Runnable" />
+</relations>
+</class>
+
+</classes>
+</package>
+
+<package  name ="org.mql.java" ><classes>
+<class  name ="class org.mql.java.Buffer" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="data" type ="java.lang.Object[]" visibility ="private" />
+
+<field  name ="readHead" type ="int" visibility ="private" />
+
+<field  name ="writeHead" type ="int" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.Buffer" visibility ="public" >
+<parameters>
+<parameter type ="int" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public synchronized" return-type ="void" name ="write" >
+<parameters>
+<parameter type ="java.lang.Object" />
+</parameters>
+</method>
+
+<method visibility ="public synchronized" return-type ="Object" name ="read" >
+</method>
+
+<method visibility ="public synchronized" return-type ="Object[]" name ="getData" >
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="use" classname ="java.lang.Object" />
+<relation type ="agregation" aggregated ="java.lang.Object[]" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.Consumer" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="buffer" type ="org.mql.java.Buffer" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.Consumer" visibility ="public" >
+<parameters>
+<parameter type ="java.lang.String" />
+<parameter type ="org.mql.java.Buffer" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="run" >
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Thread" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="agregation" aggregated ="org.mql.java.Buffer" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.Context" visibility ="[public]" annotation ="">
+<constructors>
+<constructor 
+ name ="org.mql.java.Context" visibility ="public" >
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public static" return-type ="void" name ="print" >
+<parameters>
+<parameter type ="java.lang.String" />
+</parameters>
+</method>
+
+<method visibility ="public static" return-type ="void" name ="pause" >
+<parameters>
+<parameter type ="int" />
+</parameters>
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.Examples" visibility ="[public]" annotation ="">
+<constructors>
+<constructor 
+ name ="org.mql.java.Examples" visibility ="public" >
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public static" return-type ="void" name ="main" >
+<parameters>
+<parameter type ="java.lang.String[]" />
+</parameters>
+</method>
+
+<method visibility ="" return-type ="void" name ="exp01" >
+</method>
+
+<method visibility ="" return-type ="void" name ="exp02" >
+</method>
+
+<method visibility ="" return-type ="void" name ="exp03" >
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.IntWriter" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="sharedResource" type ="java.util.List[java.lang.Integer]" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.IntWriter" visibility ="public" >
+<parameters>
+<parameter type ="java.lang.String" />
+<parameter type ="java.util.List<java.lang.Integer>" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="run" >
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Thread" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="agregation" aggregated ="java.util.List<java.lang.Integer>" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.Processus" visibility ="[public]" annotation ="">
+<constructors>
+<constructor 
+ name ="org.mql.java.Processus" visibility ="public" >
+<parameters>
+<parameter type ="java.lang.String" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="run" >
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Thread" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.Producer" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="buffer" type ="org.mql.java.Buffer" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.Producer" visibility ="public" >
+<parameters>
+<parameter type ="java.lang.String" />
+<parameter type ="org.mql.java.Buffer" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="run" >
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Thread" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="agregation" aggregated ="org.mql.java.Buffer" />
+</relations>
+</class>
+
+</classes>
+</package>
+
+<package  name ="org.mql.java.semaphores" ><classes>
+<class  name ="class org.mql.java.semaphores.Buffer" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="data" type ="java.lang.Object[]" visibility ="private" />
+
+<field  name ="readHead" type ="int" visibility ="private" />
+
+<field  name ="writeHead" type ="int" visibility ="private" />
+
+<field  name ="logger" type ="org.mql.java.semaphores.Logger" visibility ="private" />
+
+<field  name ="observers" type ="java.util.List[org.mql.java.semaphores.Observer]" visibility ="private" />
+
+<field  name ="currentWritePosition" type ="int" visibility ="private" />
+
+<field  name ="currentReadPosition" type ="int" visibility ="private" />
+
+<field  name ="currentProducer" type ="java.lang.Thread" visibility ="private" />
+
+<field  name ="currentConsumer" type ="java.lang.Thread" visibility ="private" />
+
+<field  name ="element" type ="java.lang.Object" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.semaphores.Buffer" visibility ="public" >
+<parameters>
+<parameter type ="int" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="private" return-type ="void" name ="log" >
+<parameters>
+<parameter type ="java.lang.String" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="void" name ="add" >
+<parameters>
+<parameter type ="org.mql.java.semaphores.Observer" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="void" name ="write" >
+<parameters>
+<parameter type ="java.lang.Object" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="Object" name ="read" >
+</method>
+
+<method visibility ="public" return-type ="Object[]" name ="getData" >
+</method>
+
+<method visibility ="public" return-type ="Object" name ="getElement" >
+</method>
+
+<method visibility ="public" return-type ="void" name ="notifyObservers" >
+</method>
+
+<method visibility ="public" return-type ="Thread" name ="getCurrentProducer" >
+</method>
+
+<method visibility ="public" return-type ="Thread" name ="getCurrentConsumer" >
+</method>
+
+<method visibility ="public" return-type ="int" name ="getReadHead" >
+</method>
+
+<method visibility ="public" return-type ="int" name ="getWriteHead" >
+</method>
+
+<method visibility ="public" return-type ="void" name ="setLogger" >
+<parameters>
+<parameter type ="org.mql.java.semaphores.Logger" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="int" name ="getCurrentWritePosition" >
+</method>
+
+<method visibility ="public" return-type ="int" name ="getCurrentReadPosition" >
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="use" classname ="org.mql.java.semaphores.Observer" />
+<relation type ="use" classname ="java.lang.Object" />
+<relation type ="use" classname ="org.mql.java.semaphores.Logger" />
+<relation type ="agregation" aggregated ="java.lang.Object[]" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Logger" />
+<relation type ="agregation" aggregated ="java.util.List<org.mql.java.semaphores.Observer>" />
+<relation type ="agregation" aggregated ="java.lang.Thread" />
+<relation type ="agregation" aggregated ="java.lang.Thread" />
+<relation type ="agregation" aggregated ="java.lang.Object" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.semaphores.ConsoleLogger" visibility ="[public]" annotation ="">
+<constructors>
+<constructor 
+ name ="org.mql.java.semaphores.ConsoleLogger" visibility ="public" >
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="log" >
+<parameters>
+<parameter type ="java.lang.String" />
+<parameter type ="java.lang.String" />
+</parameters>
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="implementation" implemented-interface ="interface org.mql.java.semaphores.Logger" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.semaphores.ConsoleObserver" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="buffer" type ="org.mql.java.semaphores.Buffer" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.semaphores.ConsoleObserver" visibility ="public" >
+<parameters>
+<parameter type ="org.mql.java.semaphores.Buffer" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="update" >
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Buffer" />
+<relation type ="implementation" implemented-interface ="interface org.mql.java.semaphores.Observer" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.semaphores.Consumer" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="buffer" type ="org.mql.java.semaphores.Buffer" visibility ="private" />
+
+<field  name ="m" type ="org.mql.java.semaphores.Semaphore" visibility ="private" />
+
+<field  name ="empty" type ="org.mql.java.semaphores.Semaphore" visibility ="private" />
+
+<field  name ="full" type ="org.mql.java.semaphores.Semaphore" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.semaphores.Consumer" visibility ="public" >
+<parameters>
+<parameter type ="java.lang.String" />
+<parameter type ="org.mql.java.semaphores.Buffer" />
+<parameter type ="org.mql.java.semaphores.Semaphore" />
+<parameter type ="org.mql.java.semaphores.Semaphore" />
+<parameter type ="org.mql.java.semaphores.Semaphore" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="run" >
+</method>
+
+<method visibility ="public" return-type ="String" name ="toString" >
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Thread" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Buffer" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Semaphore" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Semaphore" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Semaphore" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.semaphores.FileLogger" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="source" type ="java.lang.String" visibility ="private" />
+
+<field  name ="messages" type ="java.util.List[java.lang.String]" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.semaphores.FileLogger" visibility ="public" >
+<parameters>
+<parameter type ="java.lang.String" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="log" >
+<parameters>
+<parameter type ="java.lang.String" />
+<parameter type ="java.lang.String" />
+</parameters>
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="implementation" implemented-interface ="interface org.mql.java.semaphores.Logger" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.semaphores.PanelObserver" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="serialVersionUID" type ="long" visibility ="private static final" />
+
+<field  name ="buffer" type ="org.mql.java.semaphores.Buffer" visibility ="private" />
+
+<field  name ="margin" type ="int" visibility ="private" />
+
+<field  name ="size" type ="int" visibility ="private" />
+
+<field  name ="length" type ="int" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.semaphores.PanelObserver" visibility ="public" >
+<parameters>
+<parameter type ="org.mql.java.semaphores.Buffer" />
+<parameter type ="int" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="update" >
+</method>
+
+<method visibility ="public" return-type ="Dimension" name ="getPreferredSize" >
+</method>
+
+<method visibility ="protected" return-type ="void" name ="paintComponent" >
+<parameters>
+<parameter type ="java.awt.Graphics" />
+</parameters>
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JPanel" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JComponent" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Container" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Component" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="use" classname ="java.awt.Graphics" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Buffer" />
+<relation type ="implementation" implemented-interface ="interface org.mql.java.semaphores.Observer" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.semaphores.Producer" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="buffer" type ="org.mql.java.semaphores.Buffer" visibility ="private" />
+
+<field  name ="m" type ="org.mql.java.semaphores.Semaphore" visibility ="private" />
+
+<field  name ="empty" type ="org.mql.java.semaphores.Semaphore" visibility ="private" />
+
+<field  name ="full" type ="org.mql.java.semaphores.Semaphore" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.semaphores.Producer" visibility ="public" >
+<parameters>
+<parameter type ="java.lang.String" />
+<parameter type ="org.mql.java.semaphores.Buffer" />
+<parameter type ="org.mql.java.semaphores.Semaphore" />
+<parameter type ="org.mql.java.semaphores.Semaphore" />
+<parameter type ="org.mql.java.semaphores.Semaphore" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="void" name ="run" >
+</method>
+
+<method visibility ="public" return-type ="String" name ="toString" >
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Thread" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Buffer" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Semaphore" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Semaphore" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Semaphore" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.semaphores.ProducerConsumer" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="serialVersionUID" type ="long" visibility ="private static final" />
+
+<field  name ="buffer" type ="org.mql.java.semaphores.Buffer" visibility ="private" />
+
+<field  name ="producers" type ="org.mql.java.semaphores.Producer[]" visibility ="private" />
+
+<field  name ="consumers" type ="org.mql.java.semaphores.Consumer[]" visibility ="private" />
+
+<field  name ="m" type ="org.mql.java.semaphores.Semaphore" visibility ="private" />
+
+<field  name ="empty" type ="org.mql.java.semaphores.Semaphore" visibility ="private" />
+
+<field  name ="full" type ="org.mql.java.semaphores.Semaphore" visibility ="private" />
+
+<field  name ="observer" type ="org.mql.java.semaphores.PanelObserver" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.semaphores.ProducerConsumer" visibility ="public" >
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public static" return-type ="void" name ="main" >
+<parameters>
+<parameter type ="java.lang.String[]" />
+</parameters>
+</method>
+
+<method visibility ="private" return-type ="void" name ="init" >
+</method>
+
+<method visibility ="private" return-type ="void" name ="userInterface" >
+</method>
+
+<method visibility ="private" return-type ="void" name ="createConsumers" >
+<parameters>
+<parameter type ="int" />
+</parameters>
+</method>
+
+<method visibility ="private" return-type ="void" name ="createProducers" >
+<parameters>
+<parameter type ="int" />
+</parameters>
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JFrame" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Frame" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Window" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Container" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Component" />
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Buffer" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Producer[]" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Consumer[]" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Semaphore" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Semaphore" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Semaphore" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.PanelObserver" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.semaphores.Semaphore" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="name" type ="java.lang.String" visibility ="private" />
+
+<field  name ="value" type ="int" visibility ="private" />
+
+<field  name ="waitingThreadList" type ="org.mql.java.semaphores.ThreadList" visibility ="private" />
+
+<field  name ="logger" type ="org.mql.java.semaphores.Logger" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.semaphores.Semaphore" visibility ="public" >
+<parameters>
+<parameter type ="java.lang.String" />
+</parameters>
+</constructor>
+
+<constructor 
+ name ="org.mql.java.semaphores.Semaphore" visibility ="public" >
+<parameters>
+<parameter type ="java.lang.String" />
+<parameter type ="int" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="private" return-type ="void" name ="log" >
+<parameters>
+<parameter type ="java.lang.String" />
+<parameter type ="java.lang.String" />
+</parameters>
+</method>
+
+<method visibility ="public synchronized" return-type ="void" name ="init" >
+<parameters>
+<parameter type ="int" />
+</parameters>
+</method>
+
+<method visibility ="private" return-type ="void" name ="suspend" >
+</method>
+
+<method visibility ="private" return-type ="void" name ="resume" >
+</method>
+
+<method visibility ="public synchronized" return-type ="void" name ="signalDijkstra" >
+</method>
+
+<method visibility ="public synchronized" return-type ="void" name ="waitDijkstra" >
+</method>
+
+<method visibility ="public" return-type ="void" name ="setLogger" >
+<parameters>
+<parameter type ="org.mql.java.semaphores.Logger" />
+</parameters>
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="use" classname ="org.mql.java.semaphores.Logger" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.ThreadList" />
+<relation type ="agregation" aggregated ="org.mql.java.semaphores.Logger" />
+</relations>
+</class>
+
+<class  name ="class org.mql.java.semaphores.ThreadList" visibility ="[public]" annotation ="">
+<fields>
+<field  name ="name" type ="java.lang.String" visibility ="private" />
+
+<field  name ="list" type ="java.util.List[java.lang.Thread]" visibility ="private" />
+
+</fields>
+<constructors>
+<constructor 
+ name ="org.mql.java.semaphores.ThreadList" visibility ="public" >
+<parameters>
+<parameter type ="java.lang.String" />
+</parameters>
+</constructor>
+
+</constructors>
+<methods>
+<method visibility ="public" return-type ="String" name ="getName" >
+</method>
+
+<method visibility ="public synchronized" return-type ="void" name ="remove" >
+<parameters>
+<parameter type ="java.lang.Thread" />
+</parameters>
+</method>
+
+<method visibility ="public synchronized" return-type ="void" name ="add" >
+<parameters>
+<parameter type ="java.lang.Thread" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="List" name ="getList" >
+</method>
+
+</methods>
+<relations>
+<relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="use" classname ="java.lang.Thread" />
+<relation type ="use" classname ="java.lang.Thread" />
+<relation type ="agregation" aggregated ="java.util.List<java.lang.Thread>" />
+</relations>
+</class>
+
+</classes>
+<interfaces>
+<interface 
+ name ="interface org.mql.java.semaphores.Logger"><methods>
+<method visibility ="public abstract" return-type ="void" name ="log" >
+<parameters>
+<parameter type ="java.lang.String" />
+<parameter type ="java.lang.String" />
+</parameters>
+</method>
+
+</methods>
+</interface>
+
+<interface 
+ name ="interface org.mql.java.semaphores.Observer"><methods>
+<method visibility ="public abstract" return-type ="void" name ="update" >
+</method>
+
+</methods>
+</interface>
+
+</interfaces>
+</package>
+
+</project>

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Vector;
 
 import org.mql.java.application.loggers.Logger;
-import org.mql.java.application.mapping.XMLMapping;
+import org.mql.java.application.persistancexml.XMLMapping;
 import org.mql.java.application.reflection.MaClassLoader;
 
 public class ContainerPackage implements XMLMapping{
@@ -46,8 +46,8 @@ public class ContainerPackage implements XMLMapping{
 				
 				m.closeClassLoader();
 				
+			
 			}
-		
 		}
 	}
 	

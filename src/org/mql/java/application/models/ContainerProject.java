@@ -5,7 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Vector;
 
-import org.mql.java.application.mapping.XMLMapping;
+import org.mql.java.application.persistancexml.XMLMapping;
 import org.mql.java.application.reflection.PackageExplorer;
 
 

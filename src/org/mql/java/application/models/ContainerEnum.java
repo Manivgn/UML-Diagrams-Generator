@@ -3,8 +3,7 @@ package org.mql.java.application.models;
 
 import java.util.Arrays;
 
-
-import org.mql.java.application.mapping.XMLMapping;
+import org.mql.java.application.persistancexml.XMLMapping;
 
 public class ContainerEnum implements XMLMapping {
 	private String name ;

@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 import java.util.HashMap;
 
-import org.mql.java.application.mapping.XMLMapping;
+import org.mql.java.application.persistancexml.XMLMapping;
 
 
 

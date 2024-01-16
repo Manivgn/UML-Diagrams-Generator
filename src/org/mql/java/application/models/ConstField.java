@@ -1,7 +1,7 @@
 package org.mql.java.application.models;
 import java.lang.reflect.Field;
 
-import org.mql.java.application.mapping.XMLMapping;
+import org.mql.java.application.persistancexml.XMLMapping;
 
 public class ConstField implements XMLMapping{
 		

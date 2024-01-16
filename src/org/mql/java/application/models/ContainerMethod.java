@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
-import org.mql.java.application.mapping.XMLMapping;
+import org.mql.java.application.persistancexml.XMLMapping;
 
 
 public class ContainerMethod implements XMLMapping{
@@ -122,8 +122,32 @@ public class ContainerMethod implements XMLMapping{
 	
 	@Override
 	public String toString() {
-		return visibility +" "+ returntype +" "+ name + "( " 
-					 +" )" +"\n";
+		if (getParameterstype() != null) {
+			if (isConstructor == false) {
+				return visibility +" "	+ 
+						returntype +" " + 
+								name + "( " + getParameterstype() + " )"
+																	+"\n";
+			}
+			else 
+			return visibility +" "	+ 
+								name + "( " + getParameterstype() + " )"
+																	+"\n";
+			
+		}else {
+			if (isConstructor == false) {
+				return visibility +" "	+ 
+						returntype +" " + 
+								name + "(" + " )" 
+																	+"\n";
+			}
+			else 
+			return visibility +" "	+ 
+								name + "(" + " )"
+																	+"\n";
+			
+		}
+	
 		
 	}
 	
@@ -153,8 +177,8 @@ public class ContainerMethod implements XMLMapping{
 		else {
 			
 			r.append("<constructor ").append("\n");
-					r.append(" name =\"").append(getName()).append("\"");
 					r.append(" visibility =\"").append(getVisibility()).append("\"");
+					r.append(" name =\"").append(getName()).append("\"");
 			r.append(" >").append("\n");
 			if(getParameterstype() != null && !getParameterstype().isEmpty()) {
 			r.append("<parameters>").append("\n");
