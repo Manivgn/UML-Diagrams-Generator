@@ -19,6 +19,13 @@ public class ContainerPackage implements XMLMapping{
 	
 	
 	
+	public ContainerPackage(String packagename) {
+		this.packageName = packagename;
+		classlist = new Vector<ContainerClass>();
+		annotationlist = new Vector<ContainerAnnotation>();
+		enumlist = new Vector<ContainerEnum>();
+		interfacelist = new Vector<ContainerInterface>();
+	}
 	public ContainerPackage(String classpath, String packagename, File[] files)  {
 		this.packageName = packagename;
 		classlist = new Vector<ContainerClass>();
@@ -29,8 +36,8 @@ public class ContainerPackage implements XMLMapping{
 			Class<?> cls = null;
 			if(f.getName().endsWith(".class")) {
 				String classqualifiedName = packagename + "." + f.getName().replace(".class", "");
-				MaClassLoader m = new MaClassLoader(classpath, classqualifiedName);
-				cls = m.getMaClass();
+				
+				cls = MaClassLoader.loadClass(classpath, classqualifiedName);
 				
 				if (cls.isAnnotation()) 
 					annotationlist.add(new ContainerAnnotation(cls));
@@ -44,7 +51,7 @@ public class ContainerPackage implements XMLMapping{
 				else if (!cls.isAnnotation() && !cls.isEnum() && !cls.isInterface() && !cls.isRecord()) 
 					classlist.add(new ContainerClass(cls));
 				
-				m.closeClassLoader();
+				MaClassLoader.closeClassLoader();
 				
 			
 			}

@@ -18,10 +18,14 @@ public class ContainerMethod implements XMLMapping{
 	private String returntype ;
 	private String name ;
 	private List<String> parameterstype ;
-	private List<String> parameters ;
 	private List<String> annotations ;
 	public boolean isConstructor = false ;
 	
+	
+	public ContainerMethod() {
+		parameterstype = new Vector<String>();
+		annotations = new Vector<String>();
+	}
 	
 	public ContainerMethod(Method method) { 
 		this.isConstructor = false ;
@@ -50,6 +54,7 @@ public class ContainerMethod implements XMLMapping{
 		this.isConstructor = true ;
 		this.visibility = Modifier.toString(construct.getModifiers());
 		this.name = construct.getName();
+		
 		Type[] cls = construct.getGenericParameterTypes();
 		if (cls.length != 0) {
 		this.parameterstype = new LinkedList<String>();
@@ -84,16 +89,6 @@ public class ContainerMethod implements XMLMapping{
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-
-	public List<String> getParameters() {
-		return parameters;
-	}
-
-
-	public void setParameters(List<String> parameters) {
-		this.parameters = parameters;
 	}
 
 	public String getType() {
@@ -160,6 +155,9 @@ public class ContainerMethod implements XMLMapping{
 				r.append("visibility =\"").append(getVisibility()).append("\"");
 				r.append(" return-type =\"").append(getType().replace("<", "[").replace(">", "]")).append("\"");
 				r.append(" name =\"").append(getName()).append("\"");
+				if (getAnnotations() != null && !getAnnotations().isEmpty()) {
+					r.append(" annotations =\"").append(String.join(",", getAnnotations())).append("\"");
+				}
 		r.append(" >").append("\n");
 		if(getParameterstype() != null && !getParameterstype().isEmpty()) {
 		r.append("<parameters>").append("\n");
@@ -179,12 +177,15 @@ public class ContainerMethod implements XMLMapping{
 			r.append("<constructor ").append("\n");
 					r.append(" visibility =\"").append(getVisibility()).append("\"");
 					r.append(" name =\"").append(getName()).append("\"");
+					if (getAnnotations() != null && !getAnnotations().isEmpty()) {
+						r.append(" annotations =\"").append(String.join(",", getAnnotations())).append("\"");
+					}
 			r.append(" >").append("\n");
 			if(getParameterstype() != null && !getParameterstype().isEmpty()) {
 			r.append("<parameters>").append("\n");
 					for (String param : getParameterstype()) {
 						r.append("<parameter ");
-						r.append("type =\"").append(param).append("\"");
+						r.append("type =\"").append(param.replace("<", "[").replace(">", "]")).append("\"");
 						r.append(" />").append("\n");
 					}
 			r.append("</parameters>").append("\n");

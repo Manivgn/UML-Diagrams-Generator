@@ -5,25 +5,23 @@ import java.net.URL;
 import java.net.URLClassLoader;
 
 public class MaClassLoader  {
-	URLClassLoader myClassLoader;
-	private Class<?> maClasse = null;
+	private static URLClassLoader myClassLoader;
 	
-	public MaClassLoader(String projectClassPath, String classqualifiedname) {
+	
+	public static Class<?> loadClass(String projectClassPath, String classqualifiedname) {
 		 try {
 	        	URL[] classPath = {new File(projectClassPath).toURI().toURL()};
-	            myClassLoader = new URLClassLoader(classPath, ClassLoader.getSystemClassLoader());
-	            maClasse = myClassLoader.loadClass(classqualifiedname); 
+	        	myClassLoader = new URLClassLoader(classPath, ClassLoader.getSystemClassLoader());
+	            Class<?> maClasse = myClassLoader.loadClass(classqualifiedname); 
+	            return maClasse;
 	        }
 	        catch (Exception e) {
 				e.printStackTrace();
 			}
+		return null ;
 	}
 	
-	public Class<?> getMaClass() {
-		return maClasse;
-	}
-	
-	public void closeClassLoader() {
+	public static void closeClassLoader() {
 		try {
 		myClassLoader.close();
 		}

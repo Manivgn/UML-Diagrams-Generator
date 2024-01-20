@@ -10,7 +10,7 @@ import org.mql.java.application.persistancexml.SerializeToXML;
 public class Examples {
 
 	public Examples() {
-		exp10();
+		exp11();
 	}
 	
 	/*
@@ -107,7 +107,7 @@ public class Examples {
 	void exp10() {
 		ProjectExplorer p = new ProjectExplorer("C:\\Users\\hp\\eclipse-workspace\\p05-MultiThreading");
 		ContainerProject cp = p.getCtnpro();
-		cp.generateContainerPackage(p.getClasspath());
+		cp.generateContainerPackage();
 		for(ContainerPackage ctnpck: ContainerProject.getCtnpcklist()) {
 			ctnpck.setLogger(new ConsoleLogger());
 			ctnpck.display();
@@ -118,33 +118,10 @@ public class Examples {
 	void exp11() {
 		ProjectExplorer p = new ProjectExplorer("C:\\Users\\hp\\eclipse-workspace\\p05-MultiThreading");
 		ContainerProject cp = p.getCtnpro();
-		cp.generateContainerPackage(p.getClasspath());
-		String source = "resources/XML/" + cp.getProjectName() +".xml" ;
-		SerializeToXML.PersistToXML(source, cp.toXML());
-			
-			
-		
-			
-			
-			 // System.out.println("Conteneur package");
-			 // System.out.println("Nom du package");
-			 //System.out.println(ctnpck.getPackageName());
-			 /*
-			 * System.out.println("Conteneur de Class");
-			 * System.out.println(ctnpck.getClasslist());
-			 * 
-			 */ 
-			 //System.out.println("Conteneur d'Interface");
-			 //System.out.println(ctnpck.getInterfacelist());
-			 /*
-			 * System.out.println("Conteneur d'Annotation");
-			 * System.out.println(ctnpck.getAnnotationlist());
-			 * System.out.println("Conteneur d'Enumeration");
-			 * System.out.println(ctnpck.getEnumlist());
-			 */
-			 
-			
-			
+		cp.generateContainerPackage();
+		SerializeToXML.PersistToXML(cp.getProjectName(), cp.toXML());
+				
+
 		
 	}
 

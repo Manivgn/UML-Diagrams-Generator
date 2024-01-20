@@ -30,8 +30,8 @@ public class ProjectExplorer {
 	//Boolean isProjectAvailable = false;
 	// Cas ou le nom du projet est fourni incluant le path vers le projet
 	public ProjectExplorer(String projectpath) {
-		ctnpro = new ContainerProject(toProjectName(projectpath));
 		classpath = projectpath.concat("\\bin");
+		ctnpro = new ContainerProject(toProjectName(projectpath),classpath);
 		System.out.println("Classpath : " + classpath);
 		scanProject(new File(classpath), "");
 	}

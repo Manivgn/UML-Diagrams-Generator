@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
  name ="p05-MultiThreading" ><package  name ="org.mql.java.animation" ><classes>
-<class  name ="class org.mql.java.animation.Examples$ScreenListener" visibility ="[]" annotation ="">
+<class  name ="class org.mql.java.animation.Examples$ScreenListener" visibility ="[]">
 <fields>
 <field  name ="counter" type ="int" visibility ="private" />
 
@@ -10,7 +10,7 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.animation.Examples$ScreenListener" visibility ="" >
+ visibility ="" name ="org.mql.java.animation.Examples$ScreenListener" >
 <parameters>
 <parameter type ="org.mql.java.animation.Examples" />
 </parameters>
@@ -30,6 +30,12 @@
 </parameters>
 </method>
 
+<method visibility ="public" return-type ="void" name ="mouseReleased" >
+<parameters>
+<parameter type ="java.awt.event.MouseEvent" />
+</parameters>
+</method>
+
 <method visibility ="public" return-type ="void" name ="mousePressed" >
 <parameters>
 <parameter type ="java.awt.event.MouseEvent" />
@@ -37,12 +43,6 @@
 </method>
 
 <method visibility ="public" return-type ="void" name ="mouseEntered" >
-<parameters>
-<parameter type ="java.awt.event.MouseEvent" />
-</parameters>
-</method>
-
-<method visibility ="public" return-type ="void" name ="mouseReleased" >
 <parameters>
 <parameter type ="java.awt.event.MouseEvent" />
 </parameters>
@@ -61,7 +61,7 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.animation.Examples" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.animation.Examples" visibility ="[public]">
 <fields>
 <field  name ="serialVersionUID" type ="long" visibility ="private static final" />
 
@@ -70,26 +70,26 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.animation.Examples" visibility ="public" >
+ visibility ="public" name ="org.mql.java.animation.Examples" >
 </constructor>
 
 </constructors>
 <methods>
-<method visibility ="public static" return-type ="void" name ="main" >
-<parameters>
-<parameter type ="java.lang.String[]" />
-</parameters>
-</method>
-
 <method visibility ="private" return-type ="void" name ="userInterface" >
 </method>
 
 <method visibility ="" return-type ="void" name ="exp01" >
 </method>
 
+<method visibility ="public static" return-type ="void" name ="main" >
+<parameters>
+<parameter type ="java.lang.String[]" />
+</parameters>
+</method>
+
 </methods>
 <innerClasses>
-<class  name ="class org.mql.java.animation.Examples$ScreenListener" visibility ="[]" annotation ="">
+<class  name ="class org.mql.java.animation.Examples$ScreenListener" visibility ="[]">
 <fields>
 <field  name ="counter" type ="int" visibility ="private" />
 
@@ -98,7 +98,7 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.animation.Examples$ScreenListener" visibility ="" >
+ visibility ="" name ="org.mql.java.animation.Examples$ScreenListener" >
 <parameters>
 <parameter type ="org.mql.java.animation.Examples" />
 </parameters>
@@ -118,6 +118,12 @@
 </parameters>
 </method>
 
+<method visibility ="public" return-type ="void" name ="mouseReleased" >
+<parameters>
+<parameter type ="java.awt.event.MouseEvent" />
+</parameters>
+</method>
+
 <method visibility ="public" return-type ="void" name ="mousePressed" >
 <parameters>
 <parameter type ="java.awt.event.MouseEvent" />
@@ -125,12 +131,6 @@
 </method>
 
 <method visibility ="public" return-type ="void" name ="mouseEntered" >
-<parameters>
-<parameter type ="java.awt.event.MouseEvent" />
-</parameters>
-</method>
-
-<method visibility ="public" return-type ="void" name ="mouseReleased" >
 <parameters>
 <parameter type ="java.awt.event.MouseEvent" />
 </parameters>
@@ -161,7 +161,7 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.animation.Pingouin" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.animation.Pingouin" visibility ="[public]">
 <fields>
 <field  name ="serialVersionUID" type ="long" visibility ="private static final" />
 
@@ -190,7 +190,7 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.animation.Pingouin" visibility ="public" >
+ visibility ="public" name ="org.mql.java.animation.Pingouin" >
 <parameters>
 <parameter type ="java.lang.String" />
 <parameter type ="int" />
@@ -200,18 +200,15 @@
 
 </constructors>
 <methods>
-<method visibility ="public" return-type ="void" name ="run" >
-</method>
-
-<method visibility ="public" return-type ="void" name ="start" >
-</method>
-
-<method visibility ="private" return-type ="void" name ="stop" >
-</method>
-
 <method visibility ="protected" return-type ="void" name ="paintComponent" >
 <parameters>
 <parameter type ="java.awt.Graphics" />
+</parameters>
+</method>
+
+<method visibility ="public static" return-type ="void" name ="pause" >
+<parameters>
+<parameter type ="int" />
 </parameters>
 </method>
 
@@ -224,16 +221,19 @@
 </parameters>
 </method>
 
-<method visibility ="public static" return-type ="void" name ="pause" >
+<method visibility ="private" return-type ="void" name ="goLeft" >
 <parameters>
 <parameter type ="int" />
 </parameters>
 </method>
 
-<method visibility ="private" return-type ="void" name ="goLeft" >
-<parameters>
-<parameter type ="int" />
-</parameters>
+<method visibility ="public" return-type ="void" name ="run" >
+</method>
+
+<method visibility ="public" return-type ="void" name ="start" >
+</method>
+
+<method visibility ="private" return-type ="void" name ="stop" >
 </method>
 
 </methods>
@@ -250,14 +250,14 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.animation.Task" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.animation.Task" visibility ="[public]">
 <fields>
 <field  name ="runner" type ="java.lang.Thread" visibility ="private" />
 
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.animation.Task" visibility ="public" >
+ visibility ="public" name ="org.mql.java.animation.Task" >
 <parameters>
 <parameter type ="java.lang.String" />
 </parameters>
@@ -283,7 +283,7 @@
 </package>
 
 <package  name ="org.mql.java" ><classes>
-<class  name ="class org.mql.java.Buffer" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.Buffer" visibility ="[public]">
 <fields>
 <field  name ="data" type ="java.lang.Object[]" visibility ="private" />
 
@@ -294,7 +294,7 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.Buffer" visibility ="public" >
+ visibility ="public" name ="org.mql.java.Buffer" >
 <parameters>
 <parameter type ="int" />
 </parameters>
@@ -322,14 +322,14 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.Consumer" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.Consumer" visibility ="[public]">
 <fields>
 <field  name ="buffer" type ="org.mql.java.Buffer" visibility ="private" />
 
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.Consumer" visibility ="public" >
+ visibility ="public" name ="org.mql.java.Consumer" >
 <parameters>
 <parameter type ="java.lang.String" />
 <parameter type ="org.mql.java.Buffer" />
@@ -349,72 +349,72 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.Context" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.Context" visibility ="[public]">
 <constructors>
 <constructor 
- name ="org.mql.java.Context" visibility ="public" >
+ visibility ="public" name ="org.mql.java.Context" >
 </constructor>
 
 </constructors>
 <methods>
-<method visibility ="public static" return-type ="void" name ="print" >
-<parameters>
-<parameter type ="java.lang.String" />
-</parameters>
-</method>
-
 <method visibility ="public static" return-type ="void" name ="pause" >
 <parameters>
 <parameter type ="int" />
 </parameters>
 </method>
 
+<method visibility ="public static" return-type ="void" name ="print" >
+<parameters>
+<parameter type ="java.lang.String" />
+</parameters>
+</method>
+
 </methods>
 <relations>
 <relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
 </relations>
 </class>
 
-<class  name ="class org.mql.java.Examples" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.Examples" visibility ="[public]">
 <constructors>
 <constructor 
- name ="org.mql.java.Examples" visibility ="public" >
+ visibility ="public" name ="org.mql.java.Examples" >
 </constructor>
 
 </constructors>
 <methods>
+<method visibility ="" return-type ="void" name ="exp01" >
+</method>
+
+<method visibility ="" return-type ="void" name ="exp03" >
+</method>
+
+<method visibility ="" return-type ="void" name ="exp02" >
+</method>
+
 <method visibility ="public static" return-type ="void" name ="main" >
 <parameters>
 <parameter type ="java.lang.String[]" />
 </parameters>
 </method>
 
-<method visibility ="" return-type ="void" name ="exp01" >
-</method>
-
-<method visibility ="" return-type ="void" name ="exp02" >
-</method>
-
-<method visibility ="" return-type ="void" name ="exp03" >
-</method>
-
 </methods>
 <relations>
 <relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
 </relations>
 </class>
 
-<class  name ="class org.mql.java.IntWriter" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.IntWriter" visibility ="[public]">
 <fields>
 <field  name ="sharedResource" type ="java.util.List[java.lang.Integer]" visibility ="private" />
 
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.IntWriter" visibility ="public" >
+ visibility ="public" name ="org.mql.java.IntWriter" >
 <parameters>
 <parameter type ="java.lang.String" />
-<parameter type ="java.util.List<java.lang.Integer>" />
+<parameter type ="java.util.List[java.lang.Integer]" />
 </parameters>
 </constructor>
 
@@ -427,14 +427,14 @@
 <relations>
 <relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Thread" />
 <relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
-<relation type ="agregation" aggregated ="java.util.List<java.lang.Integer>" />
+<relation type ="agregation" aggregated ="java.util.List[java.lang.Integer]" />
 </relations>
 </class>
 
-<class  name ="class org.mql.java.Processus" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.Processus" visibility ="[public]">
 <constructors>
 <constructor 
- name ="org.mql.java.Processus" visibility ="public" >
+ visibility ="public" name ="org.mql.java.Processus" >
 <parameters>
 <parameter type ="java.lang.String" />
 </parameters>
@@ -452,14 +452,14 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.Producer" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.Producer" visibility ="[public]">
 <fields>
 <field  name ="buffer" type ="org.mql.java.Buffer" visibility ="private" />
 
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.Producer" visibility ="public" >
+ visibility ="public" name ="org.mql.java.Producer" >
 <parameters>
 <parameter type ="java.lang.String" />
 <parameter type ="org.mql.java.Buffer" />
@@ -483,7 +483,7 @@
 </package>
 
 <package  name ="org.mql.java.semaphores" ><classes>
-<class  name ="class org.mql.java.semaphores.Buffer" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.semaphores.Buffer" visibility ="[public]">
 <fields>
 <field  name ="data" type ="java.lang.Object[]" visibility ="private" />
 
@@ -508,7 +508,7 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.semaphores.Buffer" visibility ="public" >
+ visibility ="public" name ="org.mql.java.semaphores.Buffer" >
 <parameters>
 <parameter type ="int" />
 </parameters>
@@ -516,6 +516,33 @@
 
 </constructors>
 <methods>
+<method visibility ="public" return-type ="void" name ="setLogger" >
+<parameters>
+<parameter type ="org.mql.java.semaphores.Logger" />
+</parameters>
+</method>
+
+<method visibility ="public" return-type ="Thread" name ="getCurrentProducer" >
+</method>
+
+<method visibility ="public" return-type ="void" name ="notifyObservers" >
+</method>
+
+<method visibility ="public" return-type ="int" name ="getWriteHead" >
+</method>
+
+<method visibility ="public" return-type ="int" name ="getReadHead" >
+</method>
+
+<method visibility ="public" return-type ="Thread" name ="getCurrentConsumer" >
+</method>
+
+<method visibility ="public" return-type ="int" name ="getCurrentWritePosition" >
+</method>
+
+<method visibility ="public" return-type ="int" name ="getCurrentReadPosition" >
+</method>
+
 <method visibility ="private" return-type ="void" name ="log" >
 <parameters>
 <parameter type ="java.lang.String" />
@@ -543,52 +570,25 @@
 <method visibility ="public" return-type ="Object" name ="getElement" >
 </method>
 
-<method visibility ="public" return-type ="void" name ="notifyObservers" >
-</method>
-
-<method visibility ="public" return-type ="Thread" name ="getCurrentProducer" >
-</method>
-
-<method visibility ="public" return-type ="Thread" name ="getCurrentConsumer" >
-</method>
-
-<method visibility ="public" return-type ="int" name ="getReadHead" >
-</method>
-
-<method visibility ="public" return-type ="int" name ="getWriteHead" >
-</method>
-
-<method visibility ="public" return-type ="void" name ="setLogger" >
-<parameters>
-<parameter type ="org.mql.java.semaphores.Logger" />
-</parameters>
-</method>
-
-<method visibility ="public" return-type ="int" name ="getCurrentWritePosition" >
-</method>
-
-<method visibility ="public" return-type ="int" name ="getCurrentReadPosition" >
-</method>
-
 </methods>
 <relations>
 <relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
+<relation type ="use" classname ="org.mql.java.semaphores.Logger" />
 <relation type ="use" classname ="org.mql.java.semaphores.Observer" />
 <relation type ="use" classname ="java.lang.Object" />
-<relation type ="use" classname ="org.mql.java.semaphores.Logger" />
 <relation type ="agregation" aggregated ="java.lang.Object[]" />
 <relation type ="agregation" aggregated ="org.mql.java.semaphores.Logger" />
-<relation type ="agregation" aggregated ="java.util.List<org.mql.java.semaphores.Observer>" />
+<relation type ="agregation" aggregated ="java.util.List[org.mql.java.semaphores.Observer]" />
 <relation type ="agregation" aggregated ="java.lang.Thread" />
 <relation type ="agregation" aggregated ="java.lang.Thread" />
 <relation type ="agregation" aggregated ="java.lang.Object" />
 </relations>
 </class>
 
-<class  name ="class org.mql.java.semaphores.ConsoleLogger" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.semaphores.ConsoleLogger" visibility ="[public]">
 <constructors>
 <constructor 
- name ="org.mql.java.semaphores.ConsoleLogger" visibility ="public" >
+ visibility ="public" name ="org.mql.java.semaphores.ConsoleLogger" >
 </constructor>
 
 </constructors>
@@ -607,14 +607,14 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.semaphores.ConsoleObserver" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.semaphores.ConsoleObserver" visibility ="[public]">
 <fields>
 <field  name ="buffer" type ="org.mql.java.semaphores.Buffer" visibility ="private" />
 
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.semaphores.ConsoleObserver" visibility ="public" >
+ visibility ="public" name ="org.mql.java.semaphores.ConsoleObserver" >
 <parameters>
 <parameter type ="org.mql.java.semaphores.Buffer" />
 </parameters>
@@ -633,7 +633,7 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.semaphores.Consumer" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.semaphores.Consumer" visibility ="[public]">
 <fields>
 <field  name ="buffer" type ="org.mql.java.semaphores.Buffer" visibility ="private" />
 
@@ -646,7 +646,7 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.semaphores.Consumer" visibility ="public" >
+ visibility ="public" name ="org.mql.java.semaphores.Consumer" >
 <parameters>
 <parameter type ="java.lang.String" />
 <parameter type ="org.mql.java.semaphores.Buffer" />
@@ -675,7 +675,7 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.semaphores.FileLogger" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.semaphores.FileLogger" visibility ="[public]">
 <fields>
 <field  name ="source" type ="java.lang.String" visibility ="private" />
 
@@ -684,7 +684,7 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.semaphores.FileLogger" visibility ="public" >
+ visibility ="public" name ="org.mql.java.semaphores.FileLogger" >
 <parameters>
 <parameter type ="java.lang.String" />
 </parameters>
@@ -706,7 +706,7 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.semaphores.PanelObserver" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.semaphores.PanelObserver" visibility ="[public]">
 <fields>
 <field  name ="serialVersionUID" type ="long" visibility ="private static final" />
 
@@ -721,7 +721,7 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.semaphores.PanelObserver" visibility ="public" >
+ visibility ="public" name ="org.mql.java.semaphores.PanelObserver" >
 <parameters>
 <parameter type ="org.mql.java.semaphores.Buffer" />
 <parameter type ="int" />
@@ -730,9 +730,6 @@
 
 </constructors>
 <methods>
-<method visibility ="public" return-type ="void" name ="update" >
-</method>
-
 <method visibility ="public" return-type ="Dimension" name ="getPreferredSize" >
 </method>
 
@@ -740,6 +737,9 @@
 <parameters>
 <parameter type ="java.awt.Graphics" />
 </parameters>
+</method>
+
+<method visibility ="public" return-type ="void" name ="update" >
 </method>
 
 </methods>
@@ -755,7 +755,7 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.semaphores.Producer" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.semaphores.Producer" visibility ="[public]">
 <fields>
 <field  name ="buffer" type ="org.mql.java.semaphores.Buffer" visibility ="private" />
 
@@ -768,7 +768,7 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.semaphores.Producer" visibility ="public" >
+ visibility ="public" name ="org.mql.java.semaphores.Producer" >
 <parameters>
 <parameter type ="java.lang.String" />
 <parameter type ="org.mql.java.semaphores.Buffer" />
@@ -797,7 +797,7 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.semaphores.ProducerConsumer" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.semaphores.ProducerConsumer" visibility ="[public]">
 <fields>
 <field  name ="serialVersionUID" type ="long" visibility ="private static final" />
 
@@ -818,20 +818,11 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.semaphores.ProducerConsumer" visibility ="public" >
+ visibility ="public" name ="org.mql.java.semaphores.ProducerConsumer" >
 </constructor>
 
 </constructors>
 <methods>
-<method visibility ="public static" return-type ="void" name ="main" >
-<parameters>
-<parameter type ="java.lang.String[]" />
-</parameters>
-</method>
-
-<method visibility ="private" return-type ="void" name ="init" >
-</method>
-
 <method visibility ="private" return-type ="void" name ="userInterface" >
 </method>
 
@@ -845,6 +836,15 @@
 <parameters>
 <parameter type ="int" />
 </parameters>
+</method>
+
+<method visibility ="public static" return-type ="void" name ="main" >
+<parameters>
+<parameter type ="java.lang.String[]" />
+</parameters>
+</method>
+
+<method visibility ="private" return-type ="void" name ="init" >
 </method>
 
 </methods>
@@ -865,7 +865,7 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.semaphores.Semaphore" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.semaphores.Semaphore" visibility ="[public]">
 <fields>
 <field  name ="name" type ="java.lang.String" visibility ="private" />
 
@@ -878,14 +878,14 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.semaphores.Semaphore" visibility ="public" >
+ visibility ="public" name ="org.mql.java.semaphores.Semaphore" >
 <parameters>
 <parameter type ="java.lang.String" />
 </parameters>
 </constructor>
 
 <constructor 
- name ="org.mql.java.semaphores.Semaphore" visibility ="public" >
+ visibility ="public" name ="org.mql.java.semaphores.Semaphore" >
 <parameters>
 <parameter type ="java.lang.String" />
 <parameter type ="int" />
@@ -894,6 +894,18 @@
 
 </constructors>
 <methods>
+<method visibility ="public" return-type ="void" name ="setLogger" >
+<parameters>
+<parameter type ="org.mql.java.semaphores.Logger" />
+</parameters>
+</method>
+
+<method visibility ="public synchronized" return-type ="void" name ="signalDijkstra" >
+</method>
+
+<method visibility ="public synchronized" return-type ="void" name ="waitDijkstra" >
+</method>
+
 <method visibility ="private" return-type ="void" name ="log" >
 <parameters>
 <parameter type ="java.lang.String" />
@@ -913,18 +925,6 @@
 <method visibility ="private" return-type ="void" name ="resume" >
 </method>
 
-<method visibility ="public synchronized" return-type ="void" name ="signalDijkstra" >
-</method>
-
-<method visibility ="public synchronized" return-type ="void" name ="waitDijkstra" >
-</method>
-
-<method visibility ="public" return-type ="void" name ="setLogger" >
-<parameters>
-<parameter type ="org.mql.java.semaphores.Logger" />
-</parameters>
-</method>
-
 </methods>
 <relations>
 <relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
@@ -934,7 +934,7 @@
 </relations>
 </class>
 
-<class  name ="class org.mql.java.semaphores.ThreadList" visibility ="[public]" annotation ="">
+<class  name ="class org.mql.java.semaphores.ThreadList" visibility ="[public]">
 <fields>
 <field  name ="name" type ="java.lang.String" visibility ="private" />
 
@@ -943,7 +943,7 @@
 </fields>
 <constructors>
 <constructor 
- name ="org.mql.java.semaphores.ThreadList" visibility ="public" >
+ visibility ="public" name ="org.mql.java.semaphores.ThreadList" >
 <parameters>
 <parameter type ="java.lang.String" />
 </parameters>
@@ -951,6 +951,9 @@
 
 </constructors>
 <methods>
+<method visibility ="public" return-type ="List" name ="getList" >
+</method>
+
 <method visibility ="public" return-type ="String" name ="getName" >
 </method>
 
@@ -966,15 +969,12 @@
 </parameters>
 </method>
 
-<method visibility ="public" return-type ="List" name ="getList" >
-</method>
-
 </methods>
 <relations>
 <relation type ="inheritance" superClass ="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" />
 <relation type ="use" classname ="java.lang.Thread" />
 <relation type ="use" classname ="java.lang.Thread" />
-<relation type ="agregation" aggregated ="java.util.List<java.lang.Thread>" />
+<relation type ="agregation" aggregated ="java.util.List[java.lang.Thread]" />
 </relations>
 </class>
 

@@ -6,7 +6,7 @@ import java.io.FileWriter;
 public class SerializeToXML {
 	
 
-	public static void PersistToXML(String source, StringBuffer content) {
+	public static void PersistToXML(String destination, StringBuffer content) {
 		
 		/*
 		 * try { PrintWriter out = new PrintWriter(source); out.println(content);
@@ -15,7 +15,7 @@ public class SerializeToXML {
 		 * e.getMessage()); }
 		 */
 		try {
-			 FileWriter fw = new FileWriter(source);
+			 FileWriter fw = new FileWriter( "resources/XML/" + destination +  ".xml");
 			 fw.write(content.toString());
 			 fw.close();
 			 

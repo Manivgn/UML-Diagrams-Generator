@@ -11,6 +11,9 @@ public class ConstField implements XMLMapping{
 	private Object value ;
 	
 	
+	public ConstField() {
+		
+	}
 	
 	public ConstField(Object obj,Field field) {
 		this.visibility = java.lang.reflect.Modifier.toString(field.getModifiers());

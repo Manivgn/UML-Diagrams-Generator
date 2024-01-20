@@ -11,6 +11,7 @@ import org.mql.java.application.reflection.PackageExplorer;
 
 public class ContainerProject implements XMLMapping{
 	private String projectName ="";
+	private String classpath ="";
 	private LinkedHashSet<String> packagelist ; //un tableau de packages (uniques/Set);
 	private static List<ContainerPackage> ctnpcklist ;
 	
@@ -23,14 +24,23 @@ public class ContainerProject implements XMLMapping{
 		//System.out.println(ctnpro.getPacklist());
 	}
 	*/
+	
+	
 	public ContainerProject(String projectname) {
+		this.projectName += projectname ;
+		packagelist = new LinkedHashSet<String>();
+		ctnpcklist = new Vector<ContainerPackage>() ;
+		
+	}
+	public ContainerProject(String projectname, String classpath) {
+		this.classpath = classpath;
 		this.projectName += projectname;
 		packagelist = new LinkedHashSet<String>();	
 		ctnpcklist = new Vector<ContainerPackage>();
 	}
-	public  void generateContainerPackage(String classpath) {
+	public  void generateContainerPackage() {
 		for (String item : getPackagelist()) {
-			ctnpcklist.add(PackageExplorer.explorePackage(classpath, item));
+			ctnpcklist.add(PackageExplorer.explorePackage(getClasspath(), item));
 		}
 	}
 	
@@ -52,7 +62,21 @@ public class ContainerProject implements XMLMapping{
 	public String getProjectName() {
 		return projectName;
 	}
+	
+	public String getClasspath() {
+		return classpath;
+	}
+	
 		
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+	public void setClasspath(String classpath) {
+		this.classpath = classpath;
+	}
+	public static void setCtnpcklist(List<ContainerPackage> ctnpcklist) {
+		ContainerProject.ctnpcklist = ctnpcklist;
+	}
 	@Override
 	public StringBuffer toXML() {
 		StringBuffer  r = new StringBuffer();

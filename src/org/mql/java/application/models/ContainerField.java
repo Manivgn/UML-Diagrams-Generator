@@ -19,10 +19,14 @@ public class ContainerField implements XMLMapping{
 	private String name ;
 	private List<String> fieldannotations ;
 	
-
+	
+	public ContainerField() {
+		fieldannotations = new Vector<String>();
+	}
+	
 	public ContainerField(Field field) {
 		this.visibility = Modifier.toString(field.getModifiers());
-		this.type = field.getGenericType().getTypeName().replace("<", "[").replace(">", "]");
+		this.type = field.getGenericType().getTypeName();
 		this.name = field.getName() ;
 		Annotation[] annots = field.getDeclaredAnnotations();
 		if (annots.length != 0) {
@@ -76,8 +80,11 @@ public class ContainerField implements XMLMapping{
 		StringBuffer r = new StringBuffer();
 		r.append("<field ");
 				r.append(" name =\"").append(getName()).append("\"");
-				r.append(" type =\"").append(getType()).append("\"");
+				r.append(" type =\"").append(getType().replace("<", "[").replace(">", "]")).append("\"");
 				r.append(" visibility =\"").append(getVisibility()).append("\"");
+				if (getAnnotations() != null && !getAnnotations().isEmpty()) {
+					r.append(" annotations =\"").append(String.join(",", getAnnotations())).append("\"");
+				}
 		r.append(" />").append("\n");
 			
 		
