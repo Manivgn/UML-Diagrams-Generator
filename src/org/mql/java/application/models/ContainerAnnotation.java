@@ -17,6 +17,9 @@ public class ContainerAnnotation implements XMLMapping{
 	//private String target ;
 	
 	
+	public ContainerAnnotation() {
+		fields = new HashMap<String, String>();
+	}
 	
 	public ContainerAnnotation(Class<?> cl) {
 		if (cl.isAnnotation()) {

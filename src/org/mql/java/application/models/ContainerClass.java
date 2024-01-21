@@ -26,7 +26,7 @@ public class ContainerClass implements XMLMapping{
 	private List<String> agregations ;
 	private List<String> currclassImplementedInterf  ;//
 	private List<String> currclassannotations; //
-	private List<ContainerClass> innerClasses ; //
+	private List<String> innerClasses ; //
 	
 	
 	
@@ -41,7 +41,7 @@ public class ContainerClass implements XMLMapping{
 		currclassInheritance = new Vector<String>();
 		currclassImplementedInterf = new Vector<String>();
 		currclassannotations = new Vector<String>();
-		innerClasses = new Vector<ContainerClass>();
+		innerClasses = new Vector<String>();
 	}
 	
 	public ContainerClass(Class<?> cl) {
@@ -129,10 +129,10 @@ public class ContainerClass implements XMLMapping{
 		}
 		
 		//innerclasses
-		innerClasses = new Vector<ContainerClass>();
+		innerClasses = new Vector<String>();
 		Class<?> [] innercl = cl.getDeclaredClasses();
 		for (Class<?> class1 : innercl) {
-			innerClasses.add(new ContainerClass(class1));
+			innerClasses.add(class1.toString());
 		}
 				
 		}
@@ -179,12 +179,12 @@ public class ContainerClass implements XMLMapping{
 		this.currclassannotations = currclassannotations;
 	}
 
-	public List<ContainerClass> getInnerClasses() {
+	public List<String> getInnerClasses() {
 		return innerClasses;
 	}
 
 
-	public void setInnerClasses(List<ContainerClass> innerClasses) {
+	public void setInnerClasses(List<String> innerClasses) {
 		this.innerClasses = innerClasses;
 	}
 
@@ -310,8 +310,8 @@ public class ContainerClass implements XMLMapping{
 			}
 			if (getInnerClasses() != null && !getInnerClasses().isEmpty()) {
 				r.append("<innerClasses>").append("\n");
-				for (ContainerClass clz : getInnerClasses()) {
-					r.append(clz.toXML()).append("\n");
+				for (String clz : getInnerClasses()) {
+					r.append("<innerclass name =\"").append(clz).append("\"").append("/>").append("\n");
 				}
 				r.append("</innerClasses>").append("\n");
 			}
@@ -329,7 +329,7 @@ public class ContainerClass implements XMLMapping{
 					}
 					for(String i : getUses()) {
 						r.append("<relation ");
-						r.append("type =\"use\"").append(" classname =\"").append(i.replace("<", "[").replace(">", "]")).append("\"");
+						r.append("type =\"use\"").append(" className =\"").append(i.replace("<", "[").replace(">", "]")).append("\"");
 						r.append(" />").append("\n");
 					}
 					for(String i : getAgregations()) {

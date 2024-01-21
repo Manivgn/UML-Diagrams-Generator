@@ -11,6 +11,12 @@ public class ContainerEnum implements XMLMapping {
 	
 	
 	
+	
+	public ContainerEnum() {
+		
+	}
+	
+	
 	public ContainerEnum(Class<?> enums) {
 		if (enums.isEnum()) {
 			this.name = enums.toString();
@@ -21,6 +27,9 @@ public class ContainerEnum implements XMLMapping {
 	
 	public Object[] getEnumconst() {
 		return enumconst;
+	}
+	public void setEnumconst(Object[] enumconst) {
+		this.enumconst = enumconst;
 	}
 
 	public String getName() {

@@ -24,7 +24,9 @@ public class ContainerProject implements XMLMapping{
 		//System.out.println(ctnpro.getPacklist());
 	}
 	*/
-	
+	public ContainerProject() {
+		
+	}
 	
 	public ContainerProject(String projectname) {
 		this.projectName += projectname ;
@@ -74,7 +76,7 @@ public class ContainerProject implements XMLMapping{
 	public void setClasspath(String classpath) {
 		this.classpath = classpath;
 	}
-	public static void setCtnpcklist(List<ContainerPackage> ctnpcklist) {
+	public void setCtnpcklist(List<ContainerPackage> ctnpcklist) {
 		ContainerProject.ctnpcklist = ctnpcklist;
 	}
 	@Override
@@ -83,6 +85,7 @@ public class ContainerProject implements XMLMapping{
 		r.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>").append("\n");
 		r.append("<project").append("\n");
 						r.append(" name =\"").append(getProjectName()).append("\"");
+						r.append(" classpath =\"").append(getClasspath()).append("\"");
 		r.append(" >");
 			for (ContainerPackage item : ctnpcklist) {
 				r.append(item.toXML()).append("\n");

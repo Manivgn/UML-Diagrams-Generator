@@ -92,10 +92,14 @@ public class ContainerMethod implements XMLMapping{
 	}
 
 	public String getType() {
+		if (isConstructor == false) { 
 		return returntype;
+		}
+		return "";
 	}
 
 	public void setType(String type) {
+		if (isConstructor == false) 
 		this.returntype = type;
 	}
 

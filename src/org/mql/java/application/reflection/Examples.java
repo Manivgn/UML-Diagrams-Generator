@@ -4,13 +4,14 @@ package org.mql.java.application.reflection;
 import org.mql.java.application.loggers.ConsoleLogger;
 import org.mql.java.application.models.ContainerPackage;
 import org.mql.java.application.models.ContainerProject;
+import org.mql.java.application.persistancexml.ProjectSAXParser;
 import org.mql.java.application.persistancexml.SerializeToXML;
 
 
 public class Examples {
 
 	public Examples() {
-		exp11();
+		exp10();
 	}
 	
 	/*
@@ -121,8 +122,15 @@ public class Examples {
 		cp.generateContainerPackage();
 		SerializeToXML.PersistToXML(cp.getProjectName(), cp.toXML());
 				
-
-		
+	
+	}
+	void exp12() {
+		ProjectSAXParser parser = new ProjectSAXParser();
+		ContainerProject cp = parser.parse("resources/XML/p05-MultiThreading.xml");
+		for(ContainerPackage ctnpck: ContainerProject.getCtnpcklist()) {
+			ctnpck.setLogger(new ConsoleLogger());
+			ctnpck.display();
+		}
 	}
 
 	public static void main(String[] args) {

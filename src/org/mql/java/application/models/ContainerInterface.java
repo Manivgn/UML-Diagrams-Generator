@@ -15,6 +15,11 @@ public class ContainerInterface implements XMLMapping{
 	private List<ContainerMethod> innermethods ;
 	
 	
+	
+	public ContainerInterface() {
+		constfields = new Vector<ConstField>();
+		innermethods = new Vector<ContainerMethod>();
+	}
 	public ContainerInterface(Class<?> cl) {
 		if (cl.isInterface()) {
 			
@@ -74,11 +79,11 @@ public class ContainerInterface implements XMLMapping{
 							r.append(" name =\"").append(getName()).append("\"");
 							r.append(">");
 						if(getConstfields() != null && !getConstfields().isEmpty()) {
-						r.append("<fields>").append("\n");
+						r.append("<const-fields>").append("\n");
 						for (ConstField cf : getConstfields()) {
 							r.append(cf.toXML()).append("\n");
 						}
-						r.append("</fields>").append("\n");
+						r.append("</const-fields>").append("\n");
 						}
 						if (getInnerMethods() != null && !getInnerMethods().isEmpty()) {
 						r.append("<methods>").append("\n");
