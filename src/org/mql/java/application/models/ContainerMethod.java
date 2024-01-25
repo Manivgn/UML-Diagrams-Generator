@@ -3,7 +3,6 @@ package org.mql.java.application.models;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 
 import java.util.LinkedList;
@@ -11,6 +10,7 @@ import java.util.List;
 import java.util.Vector;
 
 import org.mql.java.application.persistancexml.XMLMapping;
+import org.mql.java.application.utils.StringUtils;
 
 
 public class ContainerMethod implements XMLMapping{
@@ -29,7 +29,7 @@ public class ContainerMethod implements XMLMapping{
 	
 	public ContainerMethod(Method method) { 
 		this.isConstructor = false ;
-		this.visibility = Modifier.toString(method.getModifiers());
+		this.visibility = StringUtils.toModifier(method.getModifiers());
 		this.returntype = method.getReturnType().getSimpleName();
 		this.name = method.getName().toString() ;
 		
@@ -52,7 +52,7 @@ public class ContainerMethod implements XMLMapping{
 	}
 	public ContainerMethod(Constructor<?> construct) { 
 		this.isConstructor = true ;
-		this.visibility = Modifier.toString(construct.getModifiers());
+		this.visibility = StringUtils.toModifier(construct.getModifiers());
 		this.name = construct.getName();
 		
 		Type[] cls = construct.getGenericParameterTypes();
@@ -121,32 +121,57 @@ public class ContainerMethod implements XMLMapping{
 	
 	@Override
 	public String toString() {
-		if (getParameterstype() != null) {
+		if (getParameterstype() != null && !getParameterstype().isEmpty()) {
 			if (isConstructor == false) {
-				return visibility +" "	+ 
-						returntype +" " + 
-								name + "( " + getParameterstype() + " )"
-																	+"\n";
+				String a ="" ;
+						a += " " ; 
+						a += visibility ; 
+						a += name ;
+						a += "(" ;
+							for (String st : getParameterstype()) {
+								if (st.contains(".")) {
+									a += StringUtils.toSimpleClassName(st) ;
+								}
+								else a += st ;
+								a += ", " ;
+							}
+							int lasti = a.lastIndexOf(",");
+						a = a.substring(0, lasti);
+						a += ")" ; 
+						a += " : " ;  
+						a +=returntype ;
+						return a ;
 			}
-			else 
-			return visibility +" "	+ 
-								name + "( " + getParameterstype() + " )"
-																	+"\n";
+			else { 
+			String a ="" ;
+			a += " " ; 
+			a += visibility ; 
+			a += name ;
+			a += "(" ;
+				for (String st : getParameterstype()) {
+					if (st.contains(".")) {
+						a += StringUtils.toSimpleClassName(st) ;
+					}
+					else a += st ;
+					a += ", " ;
+				}
+				int lasti = a.lastIndexOf(",");
+			a = a.substring(0, lasti);
+			a += ")" ; 
+			return a ;
+			}
 			
 		}else {
 			if (isConstructor == false) {
-				return visibility +" "	+ 
-						returntype +" " + 
-								name + "(" + " )" 
-																	+"\n";
+				return " " + visibility + 
+						name + "(" + ")" + " : " + 
+						returntype ;
 			}
 			else 
-			return visibility +" "	+ 
-								name + "(" + " )"
-																	+"\n";
-			
+			return " " + visibility + 
+								name + "(" + ")" ;
+																	
 		}
-	
 		
 	}
 	
@@ -162,18 +187,20 @@ public class ContainerMethod implements XMLMapping{
 				if (getAnnotations() != null && !getAnnotations().isEmpty()) {
 					r.append(" annotations =\"").append(String.join(",", getAnnotations())).append("\"");
 				}
-		r.append(" >").append("\n");
-		if(getParameterstype() != null && !getParameterstype().isEmpty()) {
-		r.append("<parameters>").append("\n");
-				for (String param : getParameterstype()) {
-					r.append("<parameter ");
-					r.append("type =\"").append(param.replace("<", "[").replace(">", "]")).append("\"");
-					r.append(" />").append("\n");
-				}
-		r.append("</parameters>").append("\n");
-		}
-		
-		r.append("</method>").append("\n");	
+			if(getParameterstype() != null && !getParameterstype().isEmpty()) {
+				r.append(" >");
+				r.append("<parameters>");
+					for (String param : getParameterstype()) {
+						r.append("<parameter ");
+						r.append("type =\"").append(param.replace("<", "[").replace(">", "]")).append("\"");
+						r.append(" />");
+					}
+					r.append("</parameters>");
+					r.append("</method>");	
+			}
+			else {
+				r.append("/>");
+			}
 		
 	   }
 		else {
@@ -184,22 +211,23 @@ public class ContainerMethod implements XMLMapping{
 					if (getAnnotations() != null && !getAnnotations().isEmpty()) {
 						r.append(" annotations =\"").append(String.join(",", getAnnotations())).append("\"");
 					}
-			r.append(" >").append("\n");
 			if(getParameterstype() != null && !getParameterstype().isEmpty()) {
-			r.append("<parameters>").append("\n");
+				r.append(" >");
+				r.append("<parameters>");
 					for (String param : getParameterstype()) {
 						r.append("<parameter ");
 						r.append("type =\"").append(param.replace("<", "[").replace(">", "]")).append("\"");
-						r.append(" />").append("\n");
+						r.append(" />");
 					}
-			r.append("</parameters>").append("\n");
+					r.append("</parameters>");
+					r.append("</constructor>");
+				}
+				else {
+					r.append(" />");
+				}
 			}
-			
-			r.append("</constructor>").append("\n");	
-	
-		}
-		return r;
-	
+		
+			return r;
 	}
 
 }

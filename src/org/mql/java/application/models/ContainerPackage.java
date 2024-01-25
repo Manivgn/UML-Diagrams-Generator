@@ -118,15 +118,29 @@ public class ContainerPackage implements XMLMapping{
 	}
 	@Override
 	public String toString() {
-		return getPackageName() +"\n"+
-				"Interface Section \n" +
-				getInterfacelist() + "\n"+
-				"Class Section \n" +
-				getClasslist() +"\n"+
-				"Annotation Section \n" +
-				getAnnotationlist() +"\n"+
-				"Enum Section \n" +
-				getEnumlist() +"\n" +"\n" + "\n" + "\n" ;
+		String a ="" ;
+				a += getPackageName() +"\n" ;
+				a += "Interface Section \n" ; 
+				for(ContainerInterface i : getInterfacelist()) {
+					a += i.toString();
+				}
+				a += "\n" ;
+				a += "Class Section \n" ;
+				for (ContainerClass clz : getClasslist()) {
+					a += clz.toString();
+				}
+				a += "\n" ;
+				a +="Annotation Section \n" ;
+				for (ContainerAnnotation an : getAnnotationlist()) {
+					a += an.toString();
+				}
+				a += "\n" ;
+				 a += "Enum Section \n" ;
+				for (ContainerEnum en : getEnumlist()) {
+					a += en.toString();
+				}
+				a += "\n" +"\n" + "\n" + "\n" ;
+				return a ;
 				
 	}
 
@@ -147,40 +161,40 @@ public class ContainerPackage implements XMLMapping{
 		r.append(" >");
 		
 		if (getClasslist() != null && !getClasslist().isEmpty()) {
-			r.append("<classes>").append("\n");
+			r.append("<classes>");
 				for (ContainerClass ctnclz : getClasslist()) {
-					r.append(ctnclz.toXML()).append("\n");
+					r.append(ctnclz.toXML());
 				}
-			r.append("</classes>").append("\n");
+			r.append("</classes>");
 		}
 		
 		if (getInterfacelist() != null && !getInterfacelist().isEmpty()) {
-			r.append("<interfaces>").append("\n");
+			r.append("<interfaces>");
 				for (ContainerInterface ctninterf : getInterfacelist()) {
-					r.append(ctninterf.toXML()).append("\n");
+					r.append(ctninterf.toXML());
 				}
-			r.append("</interfaces>").append("\n");
+			r.append("</interfaces>");
 			
 		}
 		
 		if (getAnnotationlist() != null && !getEnumlist().isEmpty()) {
-			r.append("<annotations>").append("\n");
+			r.append("<annotations>");
 				for (ContainerAnnotation ctnann : getAnnotationlist()) {
-					r.append(ctnann.toXML()).append("\n");
+					r.append(ctnann.toXML());
 				}
-			r.append("</annotations>").append("\n");
+			r.append("</annotations>");
 	
 		}
 		
 		if (getEnumlist() != null && !getEnumlist().isEmpty()) {
-			r.append("<enumerations>").append("\n");
+			r.append("<enumerations>");
 				for (ContainerEnum ctnenum : getEnumlist()) {
-					r.append(ctnenum.toXML()).append("\n");
+					r.append(ctnenum.toXML());
 				}
-			r.append("</enumerations>").append("\n");
+			r.append("</enumerations>");
 	
 		}
-		r.append("</package>").append("\n");
+		r.append("</package>");
 				
 		return r ;
 	}

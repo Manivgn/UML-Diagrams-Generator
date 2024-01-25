@@ -2,6 +2,7 @@ package org.mql.java.application.models;
 import java.lang.reflect.Field;
 
 import org.mql.java.application.persistancexml.XMLMapping;
+import org.mql.java.application.utils.StringUtils;
 
 public class ConstField implements XMLMapping{
 		
@@ -16,7 +17,7 @@ public class ConstField implements XMLMapping{
 	}
 	
 	public ConstField(Object obj,Field field) {
-		this.visibility = java.lang.reflect.Modifier.toString(field.getModifiers());
+		this.visibility = StringUtils.toModifier(field.getModifiers());
 		this.type = field.getGenericType().toString();
 		this.name = field.getName().toString();
 		try {
@@ -62,7 +63,12 @@ public class ConstField implements XMLMapping{
 	}
 	@Override
 	public String toString() {
-		return getVisibility() + getType() + getName() +" = "+ getValue()+"\n";
+		return  " " + getVisibility() 
+						+ getName() + 
+						" = " 
+						+ getValue() 
+						+ " : " 
+						+getType()  ;
 	}
 	@Override
 	public StringBuffer toXML() {

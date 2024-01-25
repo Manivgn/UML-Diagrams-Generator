@@ -72,16 +72,16 @@ public class ContainerAnnotation implements XMLMapping{
 		r.append("<annotation ");
 								r.append(" name=\"").append(getName()).append("\"");
 								r.append(" Retention-Policy=\"").append(getRetpolicy()).append("\"");
-		r.append(" >").append("\n");
+		r.append(" >");
 		if (getFields() != null && !getFields().isEmpty()) {
 			for (String k : fields.keySet() ) {
 				r.append("<field ");
 					r.append(" name =\"").append(k).append("\"");
 					r.append(" type=\"").append(fields.get(k)).append("\"");
-				r.append(" />").append("\n");
+				r.append(" />");
 			}
 		}
-		r.append("</annotation").append("\n");
+		r.append("</annotation");
 		return r;
 	}
 	

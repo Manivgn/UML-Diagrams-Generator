@@ -120,7 +120,7 @@ public class ProjectSAXParser extends DefaultHandler{
 			String visibility = attributes.getValue("visibility");
 			String annotat = attributes.getValue("annotations");
 			ctnclz.setName(name);
-			ctnclz.setVisibility(Arrays.asList(visibility));
+			ctnclz.setVisibility(visibility);
 			ctnclz.setCurrclassannotations(Arrays.asList(annotat));
 			
 		}

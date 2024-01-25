@@ -75,24 +75,24 @@ public class ContainerInterface implements XMLMapping{
 	@Override
 	public StringBuffer toXML() {
 		StringBuffer r = new StringBuffer();
-		r.append("<interface ").append("\n");
+		r.append("<interface ");
 							r.append(" name =\"").append(getName()).append("\"");
 							r.append(">");
 						if(getConstfields() != null && !getConstfields().isEmpty()) {
-						r.append("<const-fields>").append("\n");
+						r.append("<const-fields>");
 						for (ConstField cf : getConstfields()) {
-							r.append(cf.toXML()).append("\n");
+							r.append(cf.toXML());
 						}
-						r.append("</const-fields>").append("\n");
+						r.append("</const-fields>");
 						}
 						if (getInnerMethods() != null && !getInnerMethods().isEmpty()) {
-						r.append("<methods>").append("\n");
+						r.append("<methods>");
 						for (ContainerMethod im : getInnerMethods()) {
-							r.append(im.toXML()).append("\n");
+							r.append(im.toXML());
 						}
-						r.append("</methods>").append("\n");
+						r.append("</methods>");
 						}
-		r.append("</interface>").append("\n");
+		r.append("</interface>");
 		return r ;
 	}
 	

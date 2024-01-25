@@ -2,6 +2,7 @@ package org.mql.java.application.reflection;
 
 import java.io.File;
 import org.mql.java.application.models.ContainerProject;
+import org.mql.java.application.utils.StringUtils;
 
 
 
@@ -31,7 +32,7 @@ public class ProjectExplorer {
 	// Cas ou le nom du projet est fourni incluant le path vers le projet
 	public ProjectExplorer(String projectpath) {
 		classpath = projectpath.concat("\\bin");
-		ctnpro = new ContainerProject(toProjectName(projectpath),classpath);
+		ctnpro = new ContainerProject(StringUtils.toProjectName(projectpath),classpath);
 		System.out.println("Classpath : " + classpath);
 		scanProject(new File(classpath), "");
 	}
@@ -66,11 +67,6 @@ public class ProjectExplorer {
 		}
 	}
 	
-	public String toProjectName(String projectpath) {
-		int lasti = projectpath.lastIndexOf("\\");
-		return projectpath.substring(lasti+1);
-		
-	}
 	
 	public  ContainerProject getCtnpro() {
 		return ctnpro;

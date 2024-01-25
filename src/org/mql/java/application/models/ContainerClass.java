@@ -4,18 +4,19 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
+
 import java.lang.reflect.Type;
-import java.util.Arrays;
+
 import java.util.List;
 import java.util.Vector;
 
 import org.mql.java.application.persistancexml.XMLMapping;
+import org.mql.java.application.utils.StringUtils;
 
 
 public class ContainerClass implements XMLMapping{
 	
-	private List<String> visibility ;
+	private String visibility ;
 	private String name ;
 	private List<ContainerMethod> currclassConstructors ;
 	private List<ContainerMethod> currclassmethods; //
@@ -46,7 +47,7 @@ public class ContainerClass implements XMLMapping{
 	
 	public ContainerClass(Class<?> cl) {
 		if (!cl.isAnnotation() && !cl.isEnum() && !cl.isInterface() && !cl.isRecord() ) {
-		this.visibility = Arrays.asList(Modifier.toString(cl.getModifiers()));
+		this.visibility = StringUtils.toModifier(cl.getModifiers());
 		this.name = cl.toString();
 		uses = new Vector<String>();
 		agregations = new Vector<String>();
@@ -188,11 +189,11 @@ public class ContainerClass implements XMLMapping{
 		this.innerClasses = innerClasses;
 	}
 
-	public List<String> getVisibility() {
+	public String getVisibility() {
 		return visibility;
 	}
 
-	public void setVisibility(List <String> visibility) {
+	public void setVisibility(String visibility) {
 		this.visibility = visibility;
 	}
 
@@ -266,11 +267,25 @@ public class ContainerClass implements XMLMapping{
 
 	@Override
 	public String toString() {
-		return Arrays.toString(getVisibility().toArray()) + getName() +" { \n" +
-				getCurrclassFields() +"\n"+
-				getCurrclassConstructors() +"\n"+
-				getCurrclassmethods() +" } \n" ;		
-				
+		String a ="";
+		
+		a += getVisibility() ;
+		a += getName() ; 
+		a += " {  \n" ; 
+			for(ContainerField f : getCurrclassFields()) {
+				a += f ;
+				a += "\n" ;
+			}
+			for (ContainerMethod m : getCurrclassConstructors()) {
+				a += m ;
+				a += "\n";
+			}
+			for (ContainerMethod mth : getCurrclassmethods()) {
+				a += mth ;
+				a += "\n";
+			}	
+				a += " } \n" ;		
+		return a ;	
 	}
 	@Override
 	public StringBuffer toXML() {
@@ -285,35 +300,35 @@ public class ContainerClass implements XMLMapping{
 				//int lasti = r.lastIndexOf(",");
 				//r.setCharAt(lasti-1, ' ');
 				
-		r.append(">").append("\n");
+		r.append(">");
 			
 			if (getCurrclassFields() != null && !getCurrclassFields().isEmpty()) {
-				r.append("<fields>").append("\n");
+				r.append("<fields>");
 				for (ContainerField  cf: getCurrclassFields()) {
-					r.append(cf.toXML()).append("\n");
+					r.append(cf.toXML());
 				}
-				r.append("</fields>").append("\n");
+				r.append("</fields>");
 			}
 			if(getCurrclassConstructors() != null && !getCurrclassConstructors().isEmpty()) {
-				r.append("<constructors>").append("\n");
+				r.append("<constructors>");
 				for (ContainerMethod  constr: getCurrclassConstructors()) {
-					r.append(constr.toXML()).append("\n");
+					r.append(constr.toXML());
 				}
-				r.append("</constructors>").append("\n");
+				r.append("</constructors>");
 			}
 			if (getCurrclassmethods() != null && !getCurrclassmethods().isEmpty()) {
-				r.append("<methods>").append("\n");
+				r.append("<methods>");
 				for (ContainerMethod  cm: getCurrclassmethods()) {
-					r.append(cm.toXML()).append("\n");
+					r.append(cm.toXML());
 				}
-				r.append("</methods>").append("\n");
+				r.append("</methods>");
 			}
 			if (getInnerClasses() != null && !getInnerClasses().isEmpty()) {
-				r.append("<innerClasses>").append("\n");
+				r.append("<innerClasses>");
 				for (String clz : getInnerClasses()) {
-					r.append("<innerclass name =\"").append(clz).append("\"").append("/>").append("\n");
+					r.append("<innerclass name =\"").append(clz).append("\"").append("/>");
 				}
-				r.append("</innerClasses>").append("\n");
+				r.append("</innerClasses>");
 			}
 			
 			if(		(getCurrclassInheritance() != null && !getCurrclassInheritance().isEmpty()) ||
@@ -321,32 +336,32 @@ public class ContainerClass implements XMLMapping{
 					(getAgregations() != null && !getCurrclassInheritance().isEmpty()) ||
 					(getCurrclassImplementedInterf() != null && !getCurrclassInheritance().isEmpty()) 
 					) {
-				r.append("<relations>").append("\n");
+				r.append("<relations>");
 					for(String i : getCurrclassInheritance()) {
 						r.append("<relation ");
 						r.append("type =\"inheritance\"").append(" superClass =\"").append(i.replace("<", "[").replace(">", "]")).append("\"");
-						r.append(" />").append("\n");
+						r.append(" />");
 					}
 					for(String i : getUses()) {
 						r.append("<relation ");
 						r.append("type =\"use\"").append(" className =\"").append(i.replace("<", "[").replace(">", "]")).append("\"");
-						r.append(" />").append("\n");
+						r.append(" />");
 					}
 					for(String i : getAgregations()) {
 						r.append("<relation ");
 						r.append("type =\"agregation\"").append(" aggregated =\"").append(i.replace("<", "[").replace(">", "]")).append("\"");
-						r.append(" />").append("\n");
+						r.append(" />");
 					}
 					for(String i : getCurrclassImplementedInterf()) {
 						r.append("<relation ");
 						r.append("type =\"implementation\"").append(" implemented-interface =\"").append(i.replace("<", "[").replace(">", "]")).append("\"");
-						r.append(" />").append("\n");
+						r.append(" />");
 					}
-				r.append("</relations>").append("\n");
+				r.append("</relations>");
 				
 			}
 		
-		r.append("</class>").append("\n");
+		r.append("</class>");
 			
 		return r ;
 	}

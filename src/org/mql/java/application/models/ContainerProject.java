@@ -13,7 +13,7 @@ public class ContainerProject implements XMLMapping{
 	private String projectName ="";
 	private String classpath ="";
 	private LinkedHashSet<String> packagelist ; //un tableau de packages (uniques/Set);
-	private static List<ContainerPackage> ctnpcklist ;
+	private List<ContainerPackage> ctnpcklist ;
 	
 	/*
 	public ContainerProject(String projectpath, String packagename) {
@@ -58,7 +58,7 @@ public class ContainerProject implements XMLMapping{
 		this.packagelist = packagelist;
 	}
 	
-	public static List<ContainerPackage> getCtnpcklist() {
+	public List<ContainerPackage> getCtnpcklist() {
 		return ctnpcklist;
 	}
 	public String getProjectName() {
@@ -77,18 +77,18 @@ public class ContainerProject implements XMLMapping{
 		this.classpath = classpath;
 	}
 	public void setCtnpcklist(List<ContainerPackage> ctnpcklist) {
-		ContainerProject.ctnpcklist = ctnpcklist;
+		this.ctnpcklist = ctnpcklist;
 	}
 	@Override
 	public StringBuffer toXML() {
 		StringBuffer  r = new StringBuffer();
-		r.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>").append("\n");
-		r.append("<project").append("\n");
+		r.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+		r.append("<project");
 						r.append(" name =\"").append(getProjectName()).append("\"");
 						r.append(" classpath =\"").append(getClasspath()).append("\"");
 		r.append(" >");
 			for (ContainerPackage item : ctnpcklist) {
-				r.append(item.toXML()).append("\n");
+				r.append(item.toXML());
 			}
 		r.append("</project>");
 		

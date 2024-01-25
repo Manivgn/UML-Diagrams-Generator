@@ -3,11 +3,11 @@ package org.mql.java.application.models;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.List;
 import java.util.Vector;
 
 import org.mql.java.application.persistancexml.XMLMapping;
+import org.mql.java.application.utils.StringUtils;
 
 import java.lang.StringBuffer;
 
@@ -25,7 +25,7 @@ public class ContainerField implements XMLMapping{
 	}
 	
 	public ContainerField(Field field) {
-		this.visibility = Modifier.toString(field.getModifiers());
+		this.visibility = StringUtils.toModifier(field.getModifiers());
 		this.type = field.getGenericType().getTypeName();
 		this.name = field.getName() ;
 		Annotation[] annots = field.getDeclaredAnnotations();
@@ -72,7 +72,7 @@ public class ContainerField implements XMLMapping{
 	
 	@Override
 	public String toString() {
-		return visibility + type + name +"\n";
+		return  " " + visibility + name + " : " + type;
 	}
 	
 	@Override
@@ -85,7 +85,7 @@ public class ContainerField implements XMLMapping{
 				if (getAnnotations() != null && !getAnnotations().isEmpty()) {
 					r.append(" annotations =\"").append(String.join(",", getAnnotations())).append("\"");
 				}
-		r.append(" />").append("\n");
+		r.append(" />");
 			
 		
 		return r;
