@@ -1,18 +1,11 @@
 package org.mql.java.application.reflection;
 
-
-
-
-
 import org.mql.java.application.loggers.ConsoleLogger;
 import org.mql.java.application.models.ContainerPackage;
 import org.mql.java.application.models.ContainerProject;
 import org.mql.java.application.persistancexml.ProjectSAXParser;
 import org.mql.java.application.persistancexml.SerializeToXML;
 import org.mql.java.application.ui.ProjectDiagram;
-
-
-
 
 public class Examples {
 
@@ -24,7 +17,7 @@ public class Examples {
 	
 	@SuppressWarnings("unused")
 	void exp02() {
-		ProjectDiagram p = new ProjectDiagram("C:\\\\Users\\\\hp\\\\eclipse-workspace\\\\p05-MultiThreading");
+		ProjectDiagram p = new ProjectDiagram("C:\\Users\\hp\\eclipse-workspace\\ProjectForTesting UML Diagrams Generator");
 		//C:\Users\hp\eclipse-workspace\ProjectForTesting UML Diagrams Generator
 	}
 	
@@ -40,7 +33,7 @@ public class Examples {
 	}
 	
 	void exp11() {
-		ProjectExplorer p = new ProjectExplorer("C:\\Users\\hp\\eclipse-workspace\\p05-MultiThreading");
+		ProjectExplorer p = new ProjectExplorer("C:\\Users\\hp\\eclipse-workspace\\p04-XML_Parsers");
 		ContainerProject cp = p.getCtnpro();
 		cp.generateContainerPackage();
 		SerializeToXML.PersistToXML(cp.getProjectName(), cp.toXML());

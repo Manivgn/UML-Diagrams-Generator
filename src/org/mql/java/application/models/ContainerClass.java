@@ -23,7 +23,6 @@ public class ContainerClass implements XMLMapping{
 	private List<ContainerField> currclassFields  ; //
 	private List<String> currclassInheritance  ; //
 	private List <String> uses ;
-	private List<String> compositions ;
 	private List<String> agregations ;
 	private List<String> currclassImplementedInterf  ;//
 	private List<String> currclassannotations; //
@@ -35,7 +34,7 @@ public class ContainerClass implements XMLMapping{
 	public ContainerClass() {
 		uses = new Vector<String>();
 		agregations = new Vector<String>();
-		compositions = new Vector<String>();
+		//compositions = new Vector<String>();
 		currclassConstructors = new Vector<ContainerMethod>();
 		currclassmethods = new Vector<ContainerMethod>();
 		currclassFields = new Vector<ContainerField>();
@@ -48,25 +47,24 @@ public class ContainerClass implements XMLMapping{
 	public ContainerClass(Class<?> cl) {
 		if (!cl.isAnnotation() && !cl.isEnum() && !cl.isInterface() && !cl.isRecord() ) {
 		this.visibility = StringUtils.toModifier(cl.getModifiers());
-		this.name = cl.toString();
+		this.name = StringUtils.toclassQName(cl.toString());
 		uses = new Vector<String>();
 		agregations = new Vector<String>();
-		compositions = new Vector<String>();
+		//compositions = new Vector<String>();
 		
 		//constructors
 		Constructor<?>[] constructors = cl.getDeclaredConstructors();
 		currclassConstructors = new Vector<ContainerMethod>();
 		for (Constructor<?> constructor : constructors) {
 			currclassConstructors.add(new ContainerMethod(constructor));
-			Type[] clzs = constructor.getParameterTypes();
-			//Composition est plus complexe a determiner
-			//Se baser uniquement sur les parametres du constructeur ne fournit pas réélement d'informations
-			// sur une éventuelle composition
-			for (Type clz : clzs) {
-				if (isNotsPrimitive(clz) && !clz.getTypeName().equals(cl.getTypeName())) {
-					compositions.add(clz.getTypeName());
-				}
-			}
+			/*
+			 * Type[] clzs = constructor.getParameterTypes(); //Composition est plus
+			 * complexe a determiner //Se baser uniquement sur les parametres du
+			 * constructeur ne fournit pas réélement d'informations // sur une éventuelle
+			 * composition for (Type clz : clzs) { if (isNotsPrimitive(clz) &&
+			 * !clz.getTypeName().equals(cl.getTypeName())) {
+			 * compositions.add(clz.getTypeName()); } }
+			 */
 		}
 		//System.out.println("Composition");
 		//System.out.println(getCompositions());
@@ -205,14 +203,12 @@ public class ContainerClass implements XMLMapping{
 		this.name = name;
 	}
 
-	public List<String> getCompositions() {
-		return compositions;
-	}
-
-	public void setCompositions(List<String> compositions) {
-		this.compositions = compositions;
-	}
-
+	/*
+	 * public List<String> getCompositions() { return compositions; }
+	 * 
+	 * public void setCompositions(List<String> compositions) { this.compositions =
+	 * compositions; }
+	 */
 	public List<String> getAgregations() {
 		return agregations;
 	}
@@ -296,18 +292,30 @@ public class ContainerClass implements XMLMapping{
 			if (getCurrclassannotations() != null && !getCurrclassannotations().isEmpty()) {
 				r.append(" annotations =\"");
 				r.append(String.join(",", getCurrclassannotations())).append("\"");
+			}else {
+				
 			}	
 				//int lasti = r.lastIndexOf(",");
 				//r.setCharAt(lasti-1, ' ');
 				
-		r.append(">");
-			
+		
+		if (getCurrclassFields().isEmpty() && getCurrclassmethods().isEmpty()
+			 && getCurrclassConstructors().isEmpty() && getCurrclassInheritance().isEmpty()
+			 && getInnerClasses().isEmpty() && getUses().isEmpty()
+			 && getAgregations().isEmpty() && getCurrclassImplementedInterf().isEmpty()) 
+			{
+			r.append("/>");
+		}
+		else {
+			r.append(">");
 			if (getCurrclassFields() != null && !getCurrclassFields().isEmpty()) {
 				r.append("<fields>");
 				for (ContainerField  cf: getCurrclassFields()) {
 					r.append(cf.toXML());
 				}
 				r.append("</fields>");
+			}else {
+				
 			}
 			if(getCurrclassConstructors() != null && !getCurrclassConstructors().isEmpty()) {
 				r.append("<constructors>");
@@ -315,6 +323,8 @@ public class ContainerClass implements XMLMapping{
 					r.append(constr.toXML());
 				}
 				r.append("</constructors>");
+			}else {
+				
 			}
 			if (getCurrclassmethods() != null && !getCurrclassmethods().isEmpty()) {
 				r.append("<methods>");
@@ -322,6 +332,8 @@ public class ContainerClass implements XMLMapping{
 					r.append(cm.toXML());
 				}
 				r.append("</methods>");
+			}else {
+				
 			}
 			if (getInnerClasses() != null && !getInnerClasses().isEmpty()) {
 				r.append("<innerClasses>");
@@ -329,6 +341,8 @@ public class ContainerClass implements XMLMapping{
 					r.append("<innerclass name =\"").append(clz).append("\"").append("/>");
 				}
 				r.append("</innerClasses>");
+			}else {
+				
 			}
 			
 			if(		(getCurrclassInheritance() != null && !getCurrclassInheritance().isEmpty()) ||
@@ -359,10 +373,14 @@ public class ContainerClass implements XMLMapping{
 					}
 				r.append("</relations>");
 				
+			}else {
+				
 			}
 		
-		r.append("</class>");
+			r.append("</class>");
 			
+		}
+		
 		return r ;
 	}
 

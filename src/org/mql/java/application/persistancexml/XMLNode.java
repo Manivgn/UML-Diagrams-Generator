@@ -37,7 +37,8 @@ public class XMLNode {
 			 * System.out.println("Document Type Node :"+ Node.DOCUMENT_TYPE_NODE);
 			 */
 		} catch (Exception e) {
-			System.out.println("Erreur : "+ e.getMessage());
+			System.out.println("Erreur oui : "+ e.getMessage());
+			e.printStackTrace();
 		}
 		
 	}
