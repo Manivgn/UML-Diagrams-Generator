@@ -10,15 +10,15 @@ import org.mql.java.application.ui.ProjectDiagram;
 public class Examples {
 
 	public Examples() {
-		exp11();
+		exp02();
 	}
 	
 	
 	
 	@SuppressWarnings("unused")
 	void exp02() {
-		ProjectDiagram p = new ProjectDiagram("C:\\Users\\hp\\eclipse-workspace\\ProjectForTesting UML Diagrams Generator");
-		//C:\Users\hp\eclipse-workspace\ProjectForTesting UML Diagrams Generator
+		ProjectDiagram p = new ProjectDiagram("C:\\Users\\hp\\eclipse-workspace\\p04-Xml-parsers-perso");
+		
 	}
 	
 	void exp10() {
@@ -33,7 +33,7 @@ public class Examples {
 	}
 	
 	void exp11() {
-		ProjectExplorer p = new ProjectExplorer("C:\\Users\\hp\\eclipse-workspace\\p04-XML_Parsers");
+		ProjectExplorer p = new ProjectExplorer("C:\\\\Users\\\\hp\\\\eclipse-workspace\\\\p04-Xml-parsers-perso");
 		ContainerProject cp = p.getCtnpro();
 		cp.generateContainerPackage();
 		SerializeToXML.PersistToXML(cp.getProjectName(), cp.toXML());

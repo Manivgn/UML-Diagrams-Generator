@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?><project classpath="C:\\Users\\hp\\eclipse-workspace\\p04-Xml-parsers-perso\bin" name="p04-Xml-parsers-perso">
+    <package name="org.mql.java.xml.dom">
+        <classes>
+            <class name=" org.mql.java.xml.dom.AuthorsParser" visibility="+">
+                <fields>
+                    <field name="authors" type="java.util.List[org.mql.java.xml.models.Author]" visibility="-"/>
+                    <field name="node" type="org.mql.java.xml.dom.XMLNode" visibility="+"/>
+                    <field name="list" type="org.mql.java.xml.dom.XMLNode[]" visibility="~"/>
+                </fields>
+                <constructors>
+                    <constructor name="org.mql.java.xml.dom.AuthorsParser" visibility="+"/>
+                </constructors>
+                <methods>
+                    <method name="parse" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </method>
+                    <method name="getAuthors" return-type="List" visibility="+"/>
+                </methods>
+                <relations>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" type="inheritance"/>
+                    <relation aggregated="java.util.List[org.mql.java.xml.models.Author]" type="agregation"/>
+                    <relation aggregated="org.mql.java.xml.dom.XMLNode" type="agregation"/>
+                    <relation aggregated="org.mql.java.xml.dom.XMLNode[]" type="agregation"/>
+                </relations>
+            </class>
+            <class name=" org.mql.java.xml.dom.XMLNode" visibility="+">
+                <fields>
+                    <field name="node" type="org.w3c.dom.Node" visibility="-"/>
+                    <field name="children" type="org.mql.java.xml.dom.XMLNode[]" visibility="-"/>
+                </fields>
+                <constructors>
+                    <constructor name="org.mql.java.xml.dom.XMLNode" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </constructor>
+                    <constructor name="org.mql.java.xml.dom.XMLNode" visibility="+">
+                        <parameters>
+                            <parameter type="org.w3c.dom.Node"/>
+                        </parameters>
+                    </constructor>
+                </constructors>
+                <methods>
+                    <method name="getName" return-type="String" visibility="+"/>
+                    <method name="getValue" return-type="String" visibility="+"/>
+                    <method name="isNamed" return-type="boolean" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </method>
+                    <method name="getNode" return-type="Node" visibility="+"/>
+                    <method name="getAttribute" return-type="String" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </method>
+                    <method name="setNode" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="org.w3c.dom.Node"/>
+                        </parameters>
+                    </method>
+                    <method name="getChild" return-type="XMLNode" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </method>
+                    <method name="getChildren" return-type="XMLNode[]" visibility="+"/>
+                    <method name="getElement" return-type="String" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </method>
+                    <method name="extractChildren" return-type="void" visibility="-"/>
+                </methods>
+                <relations>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" type="inheritance"/>
+                    <relation className="org.w3c.dom.Node" type="use"/>
+                    <relation aggregated="org.w3c.dom.Node" type="agregation"/>
+                    <relation aggregated="org.mql.java.xml.dom.XMLNode[]" type="agregation"/>
+                </relations>
+            </class>
+        </classes>
+    </package>
+    <package name="org.mql.java.xml">
+        <classes>
+            <class name=" org.mql.java.xml.Examples" visibility="+">
+                <constructors>
+                    <constructor name="org.mql.java.xml.Examples" visibility="+"/>
+                </constructors>
+                <methods>
+                    <method name="main" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String[]"/>
+                        </parameters>
+                    </method>
+                    <method name="config" return-type="void" visibility="~">
+                        <parameters>
+                            <parameter type="javax.swing.JFrame"/>
+                        </parameters>
+                    </method>
+                    <method name="exp02" return-type="void" visibility="~"/>
+                    <method name="exp03" return-type="void" visibility="~"/>
+                </methods>
+                <relations>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" type="inheritance"/>
+                    <relation className="javax.swing.JFrame" type="use"/>
+                </relations>
+            </class>
+        </classes>
+    </package>
+    <package name="org.mql.java.xml.models">
+        <classes>
+            <class name=" org.mql.java.xml.models.Author" visibility="+">
+                <fields>
+                    <field name="id" type="int" visibility="-"/>
+                    <field name="name" type="java.lang.String" visibility="-"/>
+                    <field name="yearBorn" type="int" visibility="-"/>
+                    <field name="technology" type="java.lang.String" visibility="-"/>
+                </fields>
+                <constructors>
+                    <constructor name="org.mql.java.xml.models.Author" visibility="+"/>
+                    <constructor name="org.mql.java.xml.models.Author" visibility="+">
+                        <parameters>
+                            <parameter type="int"/>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="int"/>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </constructor>
+                </constructors>
+                <methods>
+                    <method name="getName" return-type="String" visibility="+"/>
+                    <method name="toString" return-type="String" visibility="+"/>
+                    <method name="setName" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </method>
+                    <method name="getId" return-type="int" visibility="+"/>
+                    <method name="setTechnology" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </method>
+                    <method name="getYearBorn" return-type="int" visibility="+"/>
+                    <method name="setYearBorn" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="int"/>
+                        </parameters>
+                    </method>
+                    <method name="getTechnology" return-type="String" visibility="+"/>
+                    <method name="setId" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="int"/>
+                        </parameters>
+                    </method>
+                </methods>
+                <relations>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" type="inheritance"/>
+                </relations>
+            </class>
+            <class name=" org.mql.java.xml.models.Date" visibility="+">
+                <fields>
+                    <field name="day" type="int" visibility="-"/>
+                    <field name="month" type="int" visibility="-"/>
+                    <field name="year" type="int" visibility="-"/>
+                </fields>
+                <constructors>
+                    <constructor name="org.mql.java.xml.models.Date" visibility="+"/>
+                    <constructor name="org.mql.java.xml.models.Date" visibility="+">
+                        <parameters>
+                            <parameter type="int"/>
+                            <parameter type="int"/>
+                            <parameter type="int"/>
+                        </parameters>
+                    </constructor>
+                </constructors>
+                <methods>
+                    <method name="toString" return-type="String" visibility="+"/>
+                    <method name="getYear" return-type="int" visibility="+"/>
+                    <method name="getMonth" return-type="int" visibility="+"/>
+                    <method name="setMonth" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="int"/>
+                        </parameters>
+                    </method>
+                    <method name="setYear" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="int"/>
+                        </parameters>
+                    </method>
+                    <method name="getDay" return-type="int" visibility="+"/>
+                    <method name="setDay" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="int"/>
+                        </parameters>
+                    </method>
+                </methods>
+                <relations>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" type="inheritance"/>
+                </relations>
+            </class>
+        </classes>
+    </package>
+    <package name="org.mql.java.xml.sax">
+        <classes>
+            <class name=" org.mql.java.xml.sax.FormHandler" visibility="+">
+                <constructors>
+                    <constructor name="org.mql.java.xml.sax.FormHandler" visibility="+"/>
+                </constructors>
+                <methods>
+                    <method name="startDocument" return-type="void" visibility="+"/>
+                    <method name="startElement" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="org.xml.sax.Attributes"/>
+                        </parameters>
+                    </method>
+                    <method name="endDocument" return-type="void" visibility="+"/>
+                    <method name="endElement" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </method>
+                </methods>
+                <relations>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class org.xml.sax.helpers.DefaultHandler" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" type="inheritance"/>
+                    <relation className="org.xml.sax.Attributes" type="use"/>
+                </relations>
+            </class>
+            <class name=" org.mql.java.xml.sax.FormParser" visibility="+">
+                <fields>
+                    <field name="form" type="org.mql.java.xml.ui.Form" visibility="-"/>
+                    <field name="labels" type="java.util.Vector[java.lang.String]" visibility="-"/>
+                    <field name="choices" type="java.util.Vector[java.lang.String]" visibility="-"/>
+                    <field name="item" type="java.lang.String" visibility="-"/>
+                    <field name="inbutton" type="boolean" visibility="~"/>
+                    <field name="inchoice" type="boolean" visibility="~"/>
+                    <field name="choicetype" type="java.lang.String" visibility="-"/>
+                    <field name="choicelabel" type="java.lang.String" visibility="-"/>
+                </fields>
+                <constructors>
+                    <constructor name="org.mql.java.xml.sax.FormParser" visibility="+"/>
+                </constructors>
+                <methods>
+                    <method name="parse" return-type="Form" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </method>
+                    <method name="characters" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="char[]"/>
+                            <parameter type="int"/>
+                            <parameter type="int"/>
+                        </parameters>
+                    </method>
+                    <method name="startElement" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="org.xml.sax.Attributes"/>
+                        </parameters>
+                    </method>
+                    <method name="endElement" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </method>
+                </methods>
+                <relations>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class org.xml.sax.helpers.DefaultHandler" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" type="inheritance"/>
+                    <relation className="char[]" type="use"/>
+                    <relation className="org.xml.sax.Attributes" type="use"/>
+                    <relation aggregated="org.mql.java.xml.ui.Form" type="agregation"/>
+                </relations>
+            </class>
+        </classes>
+    </package>
+    <package name="org.mql.java.xml.ui">
+        <classes>
+            <class name=" org.mql.java.xml.ui.ButtonPanel$1" visibility="~">
+                <fields>
+                    <field name="this$0" type="org.mql.java.xml.ui.ButtonPanel" visibility="~"/>
+                    <field name="val$label" type="java.lang.String" visibility="-"/>
+                </fields>
+                <constructors>
+                    <constructor name="org.mql.java.xml.ui.ButtonPanel$1" visibility="~">
+                        <parameters>
+                            <parameter type="org.mql.java.xml.ui.ButtonPanel"/>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </constructor>
+                </constructors>
+                <methods>
+                    <method name="actionPerformed" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.awt.event.ActionEvent"/>
+                        </parameters>
+                    </method>
+                </methods>
+                <relations>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" type="inheritance"/>
+                    <relation className="java.awt.event.ActionEvent" type="use"/>
+                    <relation aggregated="org.mql.java.xml.ui.ButtonPanel" type="agregation"/>
+                    <relation implemented-interface="interface java.awt.event.ActionListener" type="implementation"/>
+                </relations>
+            </class>
+            <class name=" org.mql.java.xml.ui.ButtonPanel" visibility="+">
+                <fields>
+                    <field name="form" type="org.mql.java.xml.ui.Form" visibility="-"/>
+                    <field name="serialVersionUID" type="long" visibility="-"/>
+                </fields>
+                <constructors>
+                    <constructor name="org.mql.java.xml.ui.ButtonPanel" visibility="+">
+                        <parameters>
+                            <parameter type="java.util.Vector[java.lang.String]"/>
+                            <parameter type="org.mql.java.xml.ui.Form"/>
+                        </parameters>
+                    </constructor>
+                </constructors>
+                <methods>
+                    <method name="btnAnnulerListener" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.awt.event.ActionEvent"/>
+                        </parameters>
+                    </method>
+                    <method name="btnValiderListener" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.awt.event.ActionEvent"/>
+                        </parameters>
+                    </method>
+                </methods>
+                <relations>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JPanel" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JComponent" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Container" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Component" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" type="inheritance"/>
+                    <relation className="java.awt.event.ActionEvent" type="use"/>
+                    <relation className="java.awt.event.ActionEvent" type="use"/>
+                    <relation aggregated="org.mql.java.xml.ui.Form" type="agregation"/>
+                </relations>
+            </class>
+            <class name=" org.mql.java.xml.ui.ChoicePanel" visibility="+">
+                <fields>
+                    <field name="type" type="java.lang.String" visibility="-"/>
+                    <field name="serialVersionUID" type="long" visibility="-"/>
+                </fields>
+                <constructors>
+                    <constructor name="org.mql.java.xml.ui.ChoicePanel" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="int"/>
+                            <parameter type="java.util.Vector[java.lang.String]"/>
+                        </parameters>
+                    </constructor>
+                </constructors>
+                <methods>
+                    <method name="getType" return-type="String" visibility="+"/>
+                    <method name="setType" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                        </parameters>
+                    </method>
+                </methods>
+                <relations>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JPanel" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JComponent" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Container" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Component" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" type="inheritance"/>
+                </relations>
+            </class>
+            <class name=" org.mql.java.xml.ui.Form" visibility="+">
+                <fields>
+                    <field name="serialVersionUID" type="long" visibility="-"/>
+                    <field name="labelSize" type="int" visibility="-"/>
+                    <field name="container" type="javax.swing.JPanel" visibility="-"/>
+                </fields>
+                <constructors>
+                    <constructor name="org.mql.java.xml.ui.Form" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="int"/>
+                        </parameters>
+                    </constructor>
+                </constructors>
+                <methods>
+                    <method name="add" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="int"/>
+                        </parameters>
+                    </method>
+                    <method name="addChoicePanel" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="java.util.Vector[java.lang.String]"/>
+                        </parameters>
+                    </method>
+                    <method name="getTextField" return-type="Vector" visibility="+"/>
+                    <method name="addButtonPanel" return-type="void" visibility="+">
+                        <parameters>
+                            <parameter type="java.util.Vector[java.lang.String]"/>
+                            <parameter type="org.mql.java.xml.ui.Form"/>
+                        </parameters>
+                    </method>
+                    <method name="getChoicePanel" return-type="Vector" visibility="+"/>
+                </methods>
+                <relations>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JPanel" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JComponent" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Container" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Component" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" type="inheritance"/>
+                    <relation aggregated="javax.swing.JPanel" type="agregation"/>
+                </relations>
+            </class>
+            <class name=" org.mql.java.xml.ui.LabelTextField" visibility="+">
+                <fields>
+                    <field name="serialVersionUID" type="long" visibility="-"/>
+                </fields>
+                <constructors>
+                    <constructor name="org.mql.java.xml.ui.LabelTextField" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="int"/>
+                        </parameters>
+                    </constructor>
+                    <constructor name="org.mql.java.xml.ui.LabelTextField" visibility="+">
+                        <parameters>
+                            <parameter type="java.lang.String"/>
+                            <parameter type="int"/>
+                            <parameter type="int"/>
+                        </parameters>
+                    </constructor>
+                </constructors>
+                <relations>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JPanel" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class javax.swing.JComponent" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Container" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.awt.Component" type="inheritance"/>
+                    <relation superClass="C:\Users\hp\eclipse-workspace\VALGUENA MANI CARMEL-UML Diagrams Generator\bin class java.lang.Object" type="inheritance"/>
+                </relations>
+            </class>
+        </classes>
+    </package>
+</project>
